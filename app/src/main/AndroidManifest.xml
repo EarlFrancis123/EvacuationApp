@@ -16,6 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".StaffReliefGoodsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_staff_relief_goods"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".StaffNotifyAllEvacueeActivity"
             android:exported="false" />
         <activity

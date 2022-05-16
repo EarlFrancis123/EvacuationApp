@@ -3,7 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_staff_notify_all_evacuee.xml" value="0.17831813576494426" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_set_up.xml" value="0.358695652173913" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_staff_add_calamity.xml" value="0.26145833333333335" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_staff_add_evacuee2.xml" value="0.26145833333333335" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_staff_home.xml" value="0.26145833333333335" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_staff_notify_all_evacuee.xml" value="0.25" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_staff_relief_good.xml" value="0.358695652173913" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_staff_relief_goods.xml" value="0.26145833333333335" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_staff_view_calamity_avtivity.xml" value="0.358695652173913" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_staffaddcalamity2.xml" value="0.26145833333333335" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_staffaddevacuation2.xml" value="0.26145833333333335" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_staffreliefgoods.xml" value="0.26145833333333335" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_user_home.xml" value="0.26145833333333335" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_user_nearest_evacuation2.xml" value="0.358695652173913" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/activity_user_search_evacuee.xml" value="0.358695652173913" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/fragment_add_p_laces_calamity.xml" value="0.26145833333333335" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/fragment_add_places.xml" value="0.26145833333333335" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/fragment_add_places_evacuee.xml" value="0.358695652173913" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/fragment_add_relief_goods.xml" value="0.358695652173913" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/fragment_relief_goods.xml" value="0.35260416666666666" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/layout/fragment_staff_relief_goods.xml" value="0.24739583333333334" />
+        <entry key="..\:/Capstone/FINALCAPSTONEREPOSITORY2-master/app/src/main/res/menu/main_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Capstone/FinalCapstoneProject-master/app/src/main/res/layout/activity_maps_getlatlong.xml" value="0.34193840579710144" />
         <entry key="..\:/Capstone/FinalCapstoneProject-master/app/src/main/res/layout/activity_staff_add_evacuee2.xml" value="0.21784420289855072" />
         <entry key="..\:/Capstone/FinalCapstoneProject-master/app/src/main/res/layout/activity_staff_home.xml" value="0.21784420289855072" />

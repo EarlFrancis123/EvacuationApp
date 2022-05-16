@@ -22,6 +22,8 @@
     <string name="tab_text_6">Add Evacuee</string>
     <string name="tab_text_7">Evacuee List</string>
     <string name="tab_text_8">Your Location</string>
+    <string name="tab_text_9">Add Relief Goods</string>
+    <string name="tab_text_10">Records</string>
     <string name="col1">Calamity name</string>
     <string name="col2">Action</string>
     <string name="select">Select Item</string>
@@ -80,6 +82,7 @@
     <string name="title_activity_staff_add_evacuee2">StaffAddEvacueeActivity2</string>
     <string name="title_activity_user_nearest_evacuation2">UserNearestEvacuationActivity2</string>
     <string name="NumberofEvacuation">Number of Evacuation</string>
+    <string name="title_activity_staff_relief_goods">StaffReliefGoodsActivity</string>
 
 
 </resources>

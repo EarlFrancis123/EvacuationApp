@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
     Button btn_send,btn_sendtoall;
-    EditText EvacuationNameED,PhoneNumberED,MessageED;
+    EditText EvacuationNameED,MessageED;
     DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference();
     String NotificationMessage;
 
@@ -37,7 +37,7 @@ public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.bt_send);
         btn_sendtoall = findViewById(R.id.bt_sendtoall);
         EvacuationNameED = findViewById(R.id.evacuationNameED);
-        PhoneNumberED = findViewById(R.id.phoneNumberED);
+
         MessageED = findViewById(R.id.messageED);
 
         btn_sendtoall.setOnClickListener(new View.OnClickListener() {

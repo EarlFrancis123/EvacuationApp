@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">Evacuation</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_email">Enter Your Email</string>
+    <string name="enter_pass">Enter Your Password</string>
+    <string name="already_registered">Already Registered ? Sign In</string>
+    <string name="sign_in">Sign In</string>
+    <string name="not_registered">Not Registered Yet ? Sign Up</string>
+    <string name="profile">My Profile</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="username">Enter Your Name</string>
+    <string name="save">Save</string>
+    <string name="add_post">Add Post</string>
+    <string name="enter_caption">Write Caption here ....</string>
+    <string name="add_comment">Add Comment</string>
+    <string name="write_Comment">Write Your Comment</string>
+    <string name="tab_text_1">Add Evacuation</string>
+    <string name="tab_text_2">Evacuation List</string>
+    <string name="tab_text_3">Map</string>
+    <string name="tab_text_4">Add Calamity</string>
+    <string name="tab_text_5">Calamity List</string>
+    <string name="tab_text_6">Add Evacuee</string>
+    <string name="tab_text_7">Evacuee List</string>
+    <string name="tab_text_8">Your Location</string>
+    <string name="col1">Calamity name</string>
+    <string name="col2">Action</string>
+    <string name="select">Select Item</string>
+    <string name="row1Name">Typhoon</string>
+    <string name="row1Age">View Detials</string>
+
+    <string name="row2Name">Earth Quake</string>
+    <string name="row2Age">View Detials</string>
+
+    <string name="row3Name">Flood</string>
+    <string name="row3Age">View Detials</string>
+
+    <string name="row4Name">Fire</string>
+    <string name="row4Age">View Detials</string>
+
+    <string name="title_activity_view_evacuation">ViewEvacuation</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="Ecol1">Center Name</string>
+    <string name="Ecol2">Address</string>
+    <string name="Ecol3">Contact</string>
+    <string name="Ecol4">Action</string>
+
+    <string name="row1CenterName">Evacuation1</string>
+    <string name="row1Address">Talamban</string>
+    <string name="row1Contact">09667713838</string>
+    <string name="row1Action">View Detials</string>
+
+    <string name="row1CenterName1">Evacuation2</string>
+    <string name="row1Address1">Pitos</string>
+    <string name="row1Contact1">09667715612</string>
+    <string name="row1Action1">View Detials</string>
+
+    <string name="row1CenterName2">Evacuation3</string>
+    <string name="row1Address2">Banilad</string>
+    <string name="row1Contact2">09667723876</string>
+    <string name="row1Action2">View Detials</string>
+
+    <string name="row1CenterName3">Evacuation4</string>
+    <string name="row1Address3">Bacayan</string>
+    <string name="row1Contact3">09667711264</string>
+    <string name="row1Action3">View Detials</string>
+    <string name="title_activity_first_page">FirstPage</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_staff_add_calamity2">StaffAddCalamityActivity2</string>
+    <string name="title_activity_staff_addcalamity2">StaffADDCalamityActivity2</string>
+    <string name="title_activity_staff_add_evacuee2">StaffAddEvacueeActivity2</string>
+    <string name="title_activity_user_nearest_evacuation2">UserNearestEvacuationActivity2</string>
+    <string name="NumberofEvacuation">Number of Evacuation</string>
+
+
+</resources>

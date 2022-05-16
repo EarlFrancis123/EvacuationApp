@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StaffViewReportsActivityEvacuation">
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/textInputLO"
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+      android:layout_width="200dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:drawableStart="@drawable/ic_baseline_calamity"
+      android:hint="Evacuation Name"
+      android:layout_marginRight="140dp"
+      app:counterEnabled="true"
+      app:counterMaxLength="30"
+      app:endIconMode="clear_text"
+      app:helperText="Required"
+      app:helperTextTextColor="#FF0000"
+      app:layout_constraintBottom_toTopOf="@+id/activity_main_piechart"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:startIconDrawable="@drawable/ic_baseline_calamity">
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/evacuationsearchED"
+        android:layout_width="match_parent"
+        android:layout_height="58dp" />
+  </com.google.android.material.textfield.TextInputLayout>
+
+
+  <com.github.mikephil.charting.charts.PieChart
+      android:id="@+id/activity_main_piechart"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="120dp"
+      android:layout_marginBottom="70dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0"
+      tools:ignore="MissingClass" />
+
+  <Button
+      android:id="@+id/buttonSearchBtn"
+      android:layout_width="124dp"
+      android:layout_height="56dp"
+      android:text="Search"
+      app:layout_constraintBottom_toTopOf="@+id/activity_main_piechart"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/textInputLO"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/textView14"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Minor = "
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.044"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/activity_main_piechart"
+      app:layout_constraintVertical_bias="0.274" />
+
+  <TextView
+      android:id="@+id/minorTV"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="No Data"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toEndOf="@+id/textView14"
+      app:layout_constraintTop_toBottomOf="@+id/activity_main_piechart"
+      app:layout_constraintVertical_bias="0.274" />
+
+  <TextView
+      android:id="@+id/textView17"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Adults = "
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.641"
+      app:layout_constraintStart_toEndOf="@+id/minorTV"
+      app:layout_constraintTop_toBottomOf="@+id/activity_main_piechart"
+      app:layout_constraintVertical_bias="0.313" />
+
+  <TextView
+      android:id="@+id/adultsTV"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="No Data"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toEndOf="@+id/textView17"
+      app:layout_constraintTop_toBottomOf="@+id/activity_main_piechart"
+      app:layout_constraintVertical_bias="0.313" />
+
+  <TextView
+      android:id="@+id/textView19"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Senior Citizen = "
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.051"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/activity_main_piechart"
+      app:layout_constraintVertical_bias="0.686" />
+
+  <TextView
+      android:id="@+id/seniorTV"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="No Data"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toEndOf="@+id/textView19"
+      app:layout_constraintTop_toBottomOf="@+id/activity_main_piechart"
+      app:layout_constraintVertical_bias="0.686" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

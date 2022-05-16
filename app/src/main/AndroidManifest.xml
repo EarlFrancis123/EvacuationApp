@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.evacuationapp.finalevacuationapp">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".StaffNotifyAllEvacueeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffViewReportsActivityEvacuation"
+            android:exported="false" />
+        <activity
+            android:name=".StaffViewReportsActivityGeneralReports"
+            android:exported="false" />
+        <activity
+            android:name=".StaffViewReportsActivityMaleAndFemale"
+            android:exported="false" />
+        <activity
+            android:name=".StaffViewReportsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserNearestEvacuationActivity2"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyASqdpxYyEmUT_uYmPcfn9Y4X8fP_Y35_o" />
+
+        <activity
+            android:name=".StaffAddEvacueeActivity2"
+            android:exported="true"
+            android:label="@string/title_activity_staff_add_evacuee2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".StaffAddCalamityActivity2"
+            android:exported="false"
+            android:label="@string/title_activity_staff_add_calamity2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".StaffAddEvacuationActivity2"
+            android:exported="true"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddPostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserAddPostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserNearestEvacuationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserSearchEvacueeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserRescueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserSetUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserSignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserSignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffViewEvacuationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffViewCalamityAvtivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffAddEvacueeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaffAddCalamityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GetLatLong"
+            android:exported="false" />
+        <activity android:name=".CommentsActivity" />
+        <activity android:name=".SetUpActivity" />
+        <activity android:name=".SignInActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+    </application>
+
+</manifest>

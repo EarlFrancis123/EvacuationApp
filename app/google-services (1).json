@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "596713212383",
+    "firebase_url": "https://evacuationapp-fd914-default-rtdb.firebaseio.com",
+    "project_id": "evacuationapp-fd914",
+    "storage_bucket": "evacuationapp-fd914.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596713212383:android:fa6ecda82f25f6bb73dc6a",
+        "android_client_info": {
+          "package_name": "com.evacuationapp.finalevacuationapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596713212383-v2qgegpd3l67cmo6me7pobtklcg3rqal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCoi3Im9rbGWgTi4Yv9wMgtoVvGxdHIA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596713212383-v2qgegpd3l67cmo6me7pobtklcg3rqal.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

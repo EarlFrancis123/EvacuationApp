@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/userlandingpage"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+    <item
+        android:id="@+id/rescue"
+        android:icon="@drawable/ic_rescue"
+        android:title="Rescue"/>
+    <item
+        android:id="@+id/searchevacuee"
+        android:icon="@drawable/ic_searchevacuee"
+        android:title="Search Evacuee"/>
+
+    <item
+        android:id="@+id/nearest"
+        android:icon="@drawable/ic_baseline_nearest"
+        android:title="Nearest Evacuation"/>
+
+
+</menu>

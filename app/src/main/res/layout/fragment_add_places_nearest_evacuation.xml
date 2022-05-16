@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".AddPlacesFragmentNearestEvacuation"
+    android:background="@drawable/background2">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:text="Your Current Location"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp" />
+
+
+    <TextView
+        android:id="@+id/latTv"
+        android:layout_width="372dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="50dp"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/longTv"
+        android:layout_width="372dp"
+        android:layout_height="44dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Save" />
+
+</LinearLayout>

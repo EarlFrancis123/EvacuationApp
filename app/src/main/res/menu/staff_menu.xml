@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+    <item
+        android:id="@+id/addtypeofcalamity"
+        android:icon="@drawable/ic_addtypeofcalamity"
+        android:title="Add Calamity"/>
+    <item
+        android:id="@+id/addevacuation"
+        android:icon="@drawable/ic_baseline_addevacuation"
+        android:title="Evacuation"/>
+    <item
+        android:id="@+id/addevacuee"
+        android:icon="@drawable/ic_baseline_adddevacuee"
+        android:title="Add Evacuee"/>
+
+
+</menu>

@@ -94,7 +94,7 @@ public class AddPLacesFragmentCalamity extends Fragment {
     }
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
-    EditText edCalamityName, edCalamityDetails;
+    EditText edCalamityName, edCalamityDetails,edCalamityDate;
     Button btnSave;
     ImageView imgPlace;
     @Override
@@ -106,7 +106,7 @@ public class AddPLacesFragmentCalamity extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         edCalamityName = v.findViewById(R.id.edCalamityName);
         edCalamityDetails = v.findViewById(R.id.edCalamityDetails);
-
+        edCalamityDate= v.findViewById(R.id.edCalamityDate);
         btnSave = v.findViewById(R.id.btnSave);
         imgPlace = v.findViewById(R.id.imgPlace);
 
@@ -136,47 +136,23 @@ public class AddPLacesFragmentCalamity extends Fragment {
                 //  List<Places> placesList=new ArrayList<>();
                 places.setCalamityName(edCalamityName.getText().toString());
                 places.setCalamityDetails(edCalamityDetails.getText().toString());
+                places.setEdCalamityDate(edCalamityDate.getText().toString());
                 places.setImage(encodeImage);
 
+                databaseReference=firebaseDatabase.getReference().child("calamity");
+                databaseReference.push().setValue(places);
+                Toast.makeText(getActivity(), "Evacuation Added Successfully", Toast.LENGTH_SHORT).show();
 
-
-                databaseReference=firebaseDatabase.getReference("calamity").child(edCalamityName.getText().toString());
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.setValue(places);
-                        Toast.makeText(getActivity(), "Dara Added Successfully", Toast.LENGTH_SHORT).show();
-                        edCalamityName.setText("");
-                        edCalamityDetails.setText("");
-                        imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                edCalamityName.setText("");
+                edCalamityDetails.setText("");
+                edCalamityDate.setText("");
+                imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
             }
         });
 
         return v;
     }
-    LatLng getLatLongFromAddress(Context context, String strAddress) {
-        Geocoder geocoder = new Geocoder(context);
-        List<Address> address;
-        LatLng latLng = null;
-        try {
-            address = geocoder.getFromLocationName(strAddress, 2);
-            if (address == null) {
-                return null;
-            }
 
-            Address loc = address.get(0);
-            latLng = new LatLng(loc.getLatitude(), loc.getLongitude());
-        } catch (Exception e) {
-        }
-        return latLng;
-    }
 
 
 

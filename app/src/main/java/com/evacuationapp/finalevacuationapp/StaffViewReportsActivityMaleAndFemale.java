@@ -34,11 +34,11 @@ public class StaffViewReportsActivityMaleAndFemale extends AppCompatActivity {
     private PieChart pieChart;
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-   EditText EvacuationsearchED;
-   String sample ;
-   Button ButtonSearchBtn;
-   TextView MaleTV, FemaleTV;
-    @Override
+    EditText EvacuationsearchED;
+    String sample ;
+    Button ButtonSearchBtn;
+    TextView MaleTV, FemaleTV;
+    String searchtext;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_view_reports_male_and_female);
@@ -50,19 +50,33 @@ public class StaffViewReportsActivityMaleAndFemale extends AppCompatActivity {
         sample = String.valueOf(EvacuationsearchED);
         MaleTV = findViewById(R.id.maleTV);
         FemaleTV = findViewById(R.id.femaleTV);
+
+
         ButtonSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ArrayList<Integer> colors = new ArrayList<>();
                 ArrayList<PieEntry> entries = new ArrayList<>();
-                Query countQuery = databaseReference.child("evacuation").child(EvacuationsearchED.getText().toString()).orderByChild("gender").equalTo("Male");
+                Query countQuery = databaseReference.child("evacuee");
                 countQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         int count = 0;
+                        for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
 
+                            String value = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
 
-                        count = (int) snapshot.getChildrenCount();
+                            if(value.equals( EvacuationsearchED.getText().toString())){
+                                String value2 = String.valueOf(dataSnapshot2.child("gender").getValue());
+                                if(value2.equals("Male")){
+                                    count++;
+                                }
+                            }
+                            else {
+                                Toast.makeText(StaffViewReportsActivityMaleAndFemale.this, "No Record", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
                         entries.add(new PieEntry(count,"Male"));
                         MaleTV.setText(String.valueOf(count));
                         for (int color: ColorTemplate.MATERIAL_COLORS) {
@@ -101,13 +115,28 @@ public class StaffViewReportsActivityMaleAndFemale extends AppCompatActivity {
 
                     }
                 });
-                Query countQuery2 = databaseReference.child("evacuation").child(EvacuationsearchED.getText().toString()).orderByChild("gender").equalTo("Fe Male");
+                Query countQuery2 = databaseReference.child("evacuee");
                 countQuery2.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         int count = 0;
+                        for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
 
-                        count = (int) snapshot.getChildrenCount();
+
+
+                            String value = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
+
+                            if(value.equals( EvacuationsearchED.getText().toString())){
+                                String value2 = String.valueOf(dataSnapshot2.child("gender").getValue());
+                                if(value2.equals("Fe Male")){
+                                    count++;
+                                }
+                            }
+                            else {
+                                Toast.makeText(StaffViewReportsActivityMaleAndFemale.this, "No Record", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
                         entries.add(new PieEntry(count,"Female"));
                         FemaleTV.setText(String.valueOf(count));
                         for (int color: ColorTemplate.MATERIAL_COLORS) {

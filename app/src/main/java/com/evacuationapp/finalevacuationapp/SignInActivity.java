@@ -3,6 +3,8 @@ package com.evacuationapp.finalevacuationapp;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,23 +60,34 @@ public class SignInActivity extends AppCompatActivity {
                 String email = signInEmail.getText().toString();
                 String pass = signInPass.getText().toString();
 
-                if (!email.isEmpty() && !pass.isEmpty()){
+                if (TextUtils.isEmpty(email)) {
+                    signInEmail.setError("Email is Required");
+                    return;
+                }
+                else if ( !Patterns.EMAIL_ADDRESS.matcher(email).matches())
+                {
+                    signInEmail.setError("Incorrect Email Format");
+                }
+                else if (TextUtils.isEmpty(pass)) {
+                    signInPass.setError("Password is Required");
+                    return;
+                }
+                else {
 
-                    mAuth.signInWithEmailAndPassword(email , pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                           if (task.isSuccessful()){
-                               Toast.makeText(SignInActivity.this, "Login Successfull !!", Toast.LENGTH_SHORT).show();
-                               startActivity(new Intent(SignInActivity.this , StaffHomeActivity.class));
-                               finish();
-                           }else{
-                               Toast.makeText(SignInActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                           }
+                            if (task.isSuccessful()) {
+                                Toast.makeText(SignInActivity.this, "Login Successfull !!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(SignInActivity.this, StaffHomeActivity.class));
+                                finish();
+                            } else {
+                                Toast.makeText(SignInActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
-                }else{
-                    Toast.makeText(SignInActivity.this, "Please Enter Email and Password", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
         EForgotPassword.setOnClickListener(new View.OnClickListener() {

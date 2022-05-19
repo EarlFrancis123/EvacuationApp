@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,7 +58,19 @@ public class UserSignInActivity extends AppCompatActivity {
                 String email = signInEmail.getText().toString();
                 String pass = signInPass.getText().toString();
 
-                if (!email.isEmpty() && !pass.isEmpty()){
+                if (TextUtils.isEmpty(email)) {
+                    signInEmail.setError("Email is Required");
+                    return;
+                }
+                else if ( !Patterns.EMAIL_ADDRESS.matcher(email).matches())
+                {
+                    signInEmail.setError("Incorrect Email Format");
+                }
+                else if (TextUtils.isEmpty(pass)) {
+                    signInPass.setError("Password is Required");
+                    return;
+                }
+                else {
 
                     mAuth.signInWithEmailAndPassword(email , pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -70,8 +84,6 @@ public class UserSignInActivity extends AppCompatActivity {
                             }
                         }
                     });
-                }else{
-                    Toast.makeText(UserSignInActivity.this, "Please Enter Email and Password", Toast.LENGTH_SHORT).show();
                 }
             }
         });

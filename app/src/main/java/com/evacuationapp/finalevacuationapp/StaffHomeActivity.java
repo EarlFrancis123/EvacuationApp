@@ -195,7 +195,7 @@ public class StaffHomeActivity extends AppCompatActivity {
             startActivity(new Intent(StaffHomeActivity.this , StaffNotifyAllEvacueeActivity.class));
         }
         else if(item.getItemId() == R.id.relief_goods){
-            startActivity(new Intent(StaffHomeActivity.this , StaffReliefGoodsActivity.class));
+            startActivity(new Intent(StaffHomeActivity.this , AddReliefGoodsActivity.class));
         }
         return true;
     }

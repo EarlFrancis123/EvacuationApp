@@ -98,7 +98,6 @@
                 android:layout_marginEnd="32dp"
                 android:hint="Contact Info"
                 android:inputType="number"
-                app:prefixText="+69"
                 app:counterMaxLength="11"
                 app:startIconDrawable="@drawable/ic_baseline_center_number"
 
@@ -221,48 +220,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/evacueeBarangayLO"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:hint="Barangay"
-
-
-                app:startIconDrawable="@drawable/ic_baseline_barangay">
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edEvacueeBarangay"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/evacueeHeadLO"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:hint="Head of the Name"
-
-                app:layout_constraintStart_toStartOf="parent"
-
-                app:startIconDrawable="@drawable/ic_baseline_name">
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edEvacueeHeadOfFamily"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout

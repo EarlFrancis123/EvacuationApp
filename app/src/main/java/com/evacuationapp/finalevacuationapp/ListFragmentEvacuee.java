@@ -168,8 +168,6 @@ public class ListFragmentEvacuee extends Fragment {
                             "\n Street: " + stringList.get(i).getStreetAddress()+
                             "\n State: " + stringList.get(i).getState()+
                             "\n Country: " + stringList.get(i).getCountry()+
-                            "\n Barangay: " + stringList.get(i).getBarangay()+
-                            "\n Head of Family: " + stringList.get(i).getHeadOfFamily()+
                             "\n Evacuation Name: " + stringList.get(i).getEvacuationName()
 
 

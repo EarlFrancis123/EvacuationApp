@@ -158,7 +158,8 @@ public class ListFragmentCalamity extends Fragment {
 
             txtPlace.setText(
                     " Name: " + stringList.get(i).getCalamityName()+
-                    "\n Details: " + stringList.get(i).getCalamityDetails()
+                    "\n Details: " + stringList.get(i).getCalamityDetails()+
+                    "\n Date: " + stringList.get(i).getEdCalamityDate()
             );
             try {
 

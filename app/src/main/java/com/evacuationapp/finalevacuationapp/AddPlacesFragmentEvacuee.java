@@ -126,8 +126,6 @@ public class AddPlacesFragmentEvacuee extends Fragment {
         edStreetAddress = v.findViewById(R.id.edStreet);
         edState = v.findViewById(R.id.edState);
         edCountry = v.findViewById(R.id.auto_complete_txt_country);
-        barangay = v.findViewById(R.id.edEvacueeBarangay);
-        headOfFamily = v.findViewById(R.id.edEvacueeHeadOfFamily);
         evacuationName = v.findViewById(R.id.edEvacueeEvacuation);
         firebaseDatabase2 = FirebaseDatabase.getInstance();
         btnSave = v.findViewById(R.id.btnSave);
@@ -190,9 +188,6 @@ public class AddPlacesFragmentEvacuee extends Fragment {
                 //  List<Places> placesList=new ArrayList<>();
 
 
-
-
-
                 places1.setFirstName(firstName.getText().toString());
                 places1.setLastName(lastName.getText().toString());
                 places1.setMiddleName(middleName.getText().toString());
@@ -203,83 +198,35 @@ public class AddPlacesFragmentEvacuee extends Fragment {
                 places1.setStreetAddress(edStreetAddress.getText().toString());
                 places1.setState(edState.getText().toString());
                 places1.setCountry(edCountry.getText().toString());
-                places1.setBarangay(barangay.getText().toString());
-                places1.setHeadOfFamily(headOfFamily.getText().toString());
                 places1.setEvacuationName(evacuationName.getText().toString());
-
+                places1.setLatitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
+                        places1.getState() + "," +
+                        places1.getCountry() + ",").latitude);
+                places1.setLongitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
+                        places1.getState() + "," +
+                        places1.getCountry() + ",").longitude);
 
                 places1.setImage(encodeImage);
-                databaseReference=firebaseDatabase.getReference("evacuation").child(evacuationName.getText().toString()).child(firstName.getText().toString());
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        databaseReference.setValue(places1);
-                        Toast.makeText(getActivity(), "Dara Added Successfully", Toast.LENGTH_SHORT).show();
-                        firstName.setText("");
-                        lastName.setText("");
-                        middleName.setText("");
-                        contactInfo.setText("");
-                        gender.setText("");
-                        age.setText("");
-                        ageautocomplete.setText("");
-                        edStreetAddress.setText("");
-                        edState.setText("");
-                        edCountry.setText("");
-                        barangay.setText("");
-                        headOfFamily.setText("");
-                        evacuationName.setText("");
-                        places1.setLatitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
-                                places1.getState() + "," +
-                                places1.getCountry() + ",").latitude);
-                        places1.setLongitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
-                                places1.getState() + "," +
-                                places1.getCountry() + ",").longitude);
+                databaseReference=firebaseDatabase.getReference().child("evacuee");
+                databaseReference.push().setValue(places1);
+                Toast.makeText(getActivity(), "Dara Added Successfully", Toast.LENGTH_SHORT).show();
+                firstName.setText("");
+                lastName.setText("");
+                middleName.setText("");
+                contactInfo.setText("");
+                gender.setText("");
+                age.setText("");
+                ageautocomplete.setText("");
+                edStreetAddress.setText("");
+                edState.setText("");
+                edCountry.setText("");
+                evacuationName.setText("");
 
 
-                        imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                databaseReference2=firebaseDatabase2.getReference("evacuee").child(firstName.getText().toString());
-                databaseReference2.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference2.setValue(places1);
-                        Toast.makeText(getActivity(), "Dara Added Successfully", Toast.LENGTH_SHORT).show();
-                        firstName.setText("");
-                        lastName.setText("");
-                        middleName.setText("");
-                        contactInfo.setText("");
-                        gender.setText("");
-                        age.setText("");
-                        ageautocomplete.setText("");
-                        edStreetAddress.setText("");
-                        edState.setText("");
-                        edCountry.setText("");
-                        barangay.setText("");
-                        headOfFamily.setText("");
-                        evacuationName.setText("");
-                        places1.setLatitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
-                                places1.getState() + "," +
-                                places1.getCountry() + ",").latitude);
-                        places1.setLongitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
-                                places1.getState() + "," +
-                                places1.getCountry() + ",").longitude);
+                imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
 
 
-                        imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-                    }
-                });
             }
         });
 

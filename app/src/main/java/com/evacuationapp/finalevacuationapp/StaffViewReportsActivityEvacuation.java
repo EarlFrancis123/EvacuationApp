@@ -57,15 +57,27 @@ public class StaffViewReportsActivityEvacuation extends AppCompatActivity {
                 ArrayList<Integer> colors = new ArrayList<>();
                 ArrayList<PieEntry> entries = new ArrayList<>();
 
-                Query countQuery = databaseReference.child("evacuation").child(EvacuationsearchED.getText().toString()).orderByChild("ageautocomplete").equalTo("Minor");
+                Query countQuery = databaseReference.child("evacuee");
                 countQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
-                      int count=0;
+                        int count = 0;
+                        for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
+                            String value = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
 
-                                count = (int) snapshot.getChildrenCount();
+                            if(value.equals( EvacuationsearchED.getText().toString())){
+                                String value2 = String.valueOf(dataSnapshot2.child("ageautocomplete").getValue());
+                                if(value2.equals("Minor")){
+                                    count++;
+                                }
+                            }
+                            else {
+                                Toast.makeText(StaffViewReportsActivityEvacuation.this, "No Record", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
                         entries.add(new PieEntry(count,"Minor"));
-                            MinorTV.setText(String.valueOf(count));
+                        MinorTV.setText(String.valueOf(count));
                         for (int color: ColorTemplate.MATERIAL_COLORS) {
                             colors.add(color);
                         }
@@ -95,13 +107,25 @@ public class StaffViewReportsActivityEvacuation extends AppCompatActivity {
 
                     }
                 });
-                Query countQuery2 = databaseReference.child("evacuation").child(EvacuationsearchED.getText().toString()).orderByChild("ageautocomplete").equalTo("Adult");
+                Query countQuery2 = databaseReference.child("evacuee");
                 countQuery2.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         int count = 0;
+                        for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
+                            String value = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
 
-                        count = (int) snapshot.getChildrenCount();
+                            if(value.equals( EvacuationsearchED.getText().toString())){
+                                String value2 = String.valueOf(dataSnapshot2.child("ageautocomplete").getValue());
+                                if(value2.equals("Adult")){
+                                    count++;
+                                }
+                            }
+                            else {
+                                Toast.makeText(StaffViewReportsActivityEvacuation.this, "No Record", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
                         entries.add(new PieEntry(count,"Adult"));
                         AdultsTV.setText(String.valueOf(count));
                         for (int color: ColorTemplate.MATERIAL_COLORS) {
@@ -129,13 +153,25 @@ public class StaffViewReportsActivityEvacuation extends AppCompatActivity {
 
                     }
                 });
-                Query countQuery3 = databaseReference.child("evacuation").child(EvacuationsearchED.getText().toString()).orderByChild("ageautocomplete").equalTo("Senior Citizen");
+                Query countQuery3 = databaseReference.child("evacuee");
                 countQuery3.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         int count = 0;
+                        for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
+                            String value = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
 
-                        count = (int) snapshot.getChildrenCount();
+                            if(value.equals( EvacuationsearchED.getText().toString())){
+                                String value2 = String.valueOf(dataSnapshot2.child("ageautocomplete").getValue());
+                                if(value2.equals("Senior Citizen")){
+                                    count++;
+                                }
+                            }
+                            else {
+                                Toast.makeText(StaffViewReportsActivityEvacuation.this, "No Record", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
                         entries.add(new PieEntry(count,"Senior Citizen"));
                         SeniorTV.setText(String.valueOf(count));
                         for (int color: ColorTemplate.MATERIAL_COLORS) {

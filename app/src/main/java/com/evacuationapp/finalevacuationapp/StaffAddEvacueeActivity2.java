@@ -99,6 +99,9 @@ public class StaffAddEvacueeActivity2 extends AppCompatActivity {
         else if(item.getItemId() == R.id.notify_menu){
             startActivity(new Intent(StaffAddEvacueeActivity2.this , StaffNotifyAllEvacueeActivity.class));
         }
+        else if(item.getItemId() == R.id.relief_goods){
+            startActivity(new Intent(StaffAddEvacueeActivity2.this , AddReliefGoodsActivity.class));
+        }
         return true;
     }
 

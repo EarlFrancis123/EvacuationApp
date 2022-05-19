@@ -112,29 +112,31 @@ public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
     private void sendMessage1() {
         String sMessage = MessageED.getText().toString().trim();
 
-        Query countQuery4 = databaseReference2.child("evacuation").child(EvacuationNameED.getText().toString());
+        Query countQuery4 = databaseReference2.child("evacuee");
         countQuery4.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot1 : snapshot.getChildren()) {
-                    String value = String.valueOf(dataSnapshot1.child("contactInfo").getValue());
 
+                    String value = String.valueOf(dataSnapshot1.child("evacuationName").getValue());
 
+                    if(value.equals( EvacuationNameED.getText().toString())){
+                        String value1 = String.valueOf(dataSnapshot1.child("contactInfo").getValue());
+                        NotificationMessage = ("asdasdsadaasdasdasdasdasd");
+                        if (!value1.equals("") && !sMessage.equals("")) {
+                            SmsManager smsManager = SmsManager.getDefault();
+                            smsManager.sendTextMessage(value1, null, sMessage, null, null);
 
+                            Toast.makeText(getApplicationContext()
+                                    , "SMS sent successfully!", Toast.LENGTH_LONG).show();
 
-                    NotificationMessage = ("asdasdsadaasdasdasdasdasd");
-
-
-                    if (!value.equals("") && !sMessage.equals("")) {
-                        SmsManager smsManager = SmsManager.getDefault();
-                        smsManager.sendTextMessage(value, null, sMessage, null, null);
-
+                        } else {
+                            Toast.makeText(getApplicationContext()
+                                    , "Enter value First.", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
                         Toast.makeText(getApplicationContext()
-                                , "SMS sent successfully!", Toast.LENGTH_LONG).show();
-
-                    } else {
-                        Toast.makeText(getApplicationContext()
-                                , "Enter value First.", Toast.LENGTH_SHORT).show();
+                                , "Evacuation not found ", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

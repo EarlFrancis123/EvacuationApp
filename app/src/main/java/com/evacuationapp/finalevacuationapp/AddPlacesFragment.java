@@ -170,27 +170,18 @@ public class AddPlacesFragment extends Fragment {
                         places.getCountry() + ",").longitude);
 
 
-                databaseReference=firebaseDatabase.getReference("evacuation").child(evacuationName.getText().toString());
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.setValue(places);
-                        Toast.makeText(getActivity(), "Evacuation Added Successfully", Toast.LENGTH_SHORT).show();
-                        edCountry = String.valueOf(edCountry);
-                        edState.setText("");
-                        edStreetAddress.setText("");
-                        evacuationName.setText("");
-                        evacuationNumber.setText("");
-                        evacuationBarangay.setText("");
-                        evacuationCalamityType.setText("");
-                        imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
-                    }
+                databaseReference=firebaseDatabase.getReference().child("evacuation");
+                databaseReference.push().setValue(places);
+                Toast.makeText(getActivity(), "Evacuation Added Successfully", Toast.LENGTH_SHORT).show();
+                edCountry = String.valueOf(edCountry);
+                edState.setText("");
+                edStreetAddress.setText("");
+                evacuationName.setText("");
+                evacuationNumber.setText("");
+                evacuationBarangay.setText("");
+                evacuationCalamityType.setText("");
+                imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-                    }
-                });
             }
         });
 

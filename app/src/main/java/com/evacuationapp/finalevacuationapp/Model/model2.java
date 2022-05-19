@@ -1,27 +1,22 @@
-package com.evacuationapp.finalevacuationapp;
+package com.evacuationapp.finalevacuationapp.Model;
 
-public class Places {
-    String streetAddress,state,country,image,evacuationName,evacuationNumber,evacuationCalamityType,evacuationBarangay,calamityName,calamityDetails;
-    String firstName, lastName, middleName, contactInfo,gender,address,barangay,headOfFamily;
+public class model2
+{
+  String name,course,email,purl;
+    String firstName, lastName, middleName, contactInfo,gender,age,address,barangay,headOfFamily,evacuationName,streetAddress,state,country;
     String  AddReliefGoodsEvacuationName, AddReliefGoodsFood, AddReliefGoodsFoodPerPerson,AddReliefGoodsWater,AddReliefGoodsWaterPerPerson,AddReliefGoodsSponsor,AddReliefGoodsDate;
-    String age,ageautocomplete,AddReliefGoodsMealFor,edCalamityDate;
-    double latitude,longitude;
-    int totalevacuation;
-
-    public String getAgeautocomplete() {
-        return ageautocomplete;
+            ;
+    model2()
+    {
     }
 
-    public void setAgeautocomplete(String ageautocomplete) {
-        this.ageautocomplete = ageautocomplete;
-    }
-
-    public String getAddReliefGoodsMealFor() {
-        return AddReliefGoodsMealFor;
-    }
-
-    public void setAddReliefGoodsMealFor(String addReliefGoodsMealFor) {
-        AddReliefGoodsMealFor = addReliefGoodsMealFor;
+    public model2(String name, String addReliefGoodsEvacuationName, String addReliefGoodsFood, String addReliefGoodsWater, String addReliefGoodsSponsor, String addReliefGoodsDate) {
+        this.name = name;
+        AddReliefGoodsEvacuationName = addReliefGoodsEvacuationName;
+        AddReliefGoodsFood = addReliefGoodsFood;
+        AddReliefGoodsWater = addReliefGoodsWater;
+        AddReliefGoodsSponsor = addReliefGoodsSponsor;
+        AddReliefGoodsDate = addReliefGoodsDate;
     }
 
     public String getAddReliefGoodsEvacuationName() {
@@ -64,14 +59,6 @@ public class Places {
         AddReliefGoodsWaterPerPerson = addReliefGoodsWaterPerPerson;
     }
 
-    public String getEdCalamityDate() {
-        return edCalamityDate;
-    }
-
-    public void setEdCalamityDate(String edCalamityDate) {
-        this.edCalamityDate = edCalamityDate;
-    }
-
     public String getAddReliefGoodsSponsor() {
         return AddReliefGoodsSponsor;
     }
@@ -88,12 +75,28 @@ public class Places {
         AddReliefGoodsDate = addReliefGoodsDate;
     }
 
-    public int getTotalevacuation() {
-        return totalevacuation;
+    public String getStreetAddress() {
+        return streetAddress;
     }
 
-    public void setTotalevacuation(int totalevacuation) {
-        this.totalevacuation = totalevacuation;
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getFirstName() {
@@ -136,9 +139,12 @@ public class Places {
         this.gender = gender;
     }
 
-
     public String getAge() {
         return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public String getAddress() {
@@ -165,70 +171,6 @@ public class Places {
         this.headOfFamily = headOfFamily;
     }
 
-    public String getStreetAddress() {
-        return streetAddress;
-    }
-
-    public String getCalamityName() {
-        return calamityName;
-    }
-
-    public void setCalamityName(String calamityName) {
-        this.calamityName = calamityName;
-    }
-
-    public String getCalamityDetails() {
-        return calamityDetails;
-    }
-
-    public void setCalamityDetails(String calamityDetails) {
-        this.calamityDetails = calamityDetails;
-    }
-
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
     public String getEvacuationName() {
         return evacuationName;
     }
@@ -237,32 +179,35 @@ public class Places {
         this.evacuationName = evacuationName;
     }
 
-    public String getEvacuationNumber() {
-        return evacuationNumber;
+    public String getName() {
+        return name;
     }
 
-    public void setEvacuationNumber(String evacuationNumber) {
-        this.evacuationNumber = evacuationNumber;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEvacuationCalamityType() {
-        return evacuationCalamityType;
+    public String getCourse() {
+        return course;
     }
 
-    public void setEvacuationCalamityType(String evacuationCalamityType) {
-        this.evacuationCalamityType = evacuationCalamityType;
+    public void setCourse(String course) {
+        this.course = course;
     }
 
-
-    public String getEvacuationBarangay() {
-        return evacuationBarangay;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEvacuationBarangay(String evacuationBarangay) {
-        this.evacuationBarangay = evacuationBarangay;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public String getPurl() {
+        return purl;
+    }
+
+    public void setPurl(String purl) {
+        this.purl = purl;
     }
 }

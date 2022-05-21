@@ -4,35 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StaffViewReportsActivityMaleAndFemale">
+    tools:context=".StaffViewReportsActivityALLMaleAndFemale">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLO"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:drawableStart="@drawable/ic_baseline_calamity"
-        android:hint="Evacuation Name"
-        android:layout_marginRight="140dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="30"
-        app:endIconMode="clear_text"
-        app:helperText="Required"
-        app:helperTextTextColor="#FF0000"
+    <TextView
+        android:layout_width="324dp"
+        android:layout_height="75dp"
+
+        android:gravity="center"
+        android:text="GENERAL REPORT FOR GENDERS"
+        android:textColor="@color/purple_200"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/activity_main_piechart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_calamity">
-
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/evacuationsearchED"
-            android:layout_width="match_parent"
-            android:layout_height="58dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/activity_main_piechart"
@@ -47,16 +33,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingClass" />
-
-    <Button
-        android:id="@+id/buttonSearchBtn"
-        android:layout_width="124dp"
-        android:layout_height="56dp"
-        android:text="Search"
-        app:layout_constraintBottom_toTopOf="@+id/activity_main_piechart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textInputLO"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView13"
@@ -89,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fe-Male = "
-        android:textColor="#0E0D0D"
+        android:textColor="#040303"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.202"
@@ -102,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No Data"
-        android:textColor="#000000"
+        android:textColor="#040303"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -26,16 +26,22 @@ CardView GenderCV, EvacuationCV,CalamityCV,AllReportCV;
                 startActivity(new Intent(StaffViewReportsActivity.this , StaffViewReportsActivityMaleAndFemale.class));
             }
         });
-        AllReportCV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(StaffViewReportsActivity.this , StaffViewReportsActivityGeneralReports.class));
-            }
-        });
         EvacuationCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StaffViewReportsActivity.this , StaffViewReportsActivityEvacuation.class));
+            }
+        });
+        CalamityCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StaffViewReportsActivity.this , StaffViewReportsActivityALLMaleAndFemale.class));
+            }
+        });
+        AllReportCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StaffViewReportsActivity.this , StaffViewReportsActivityALLEvacuation.class));
             }
         });
     }

@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -186,7 +187,44 @@ public class AddPlacesFragmentEvacuee extends Fragment {
             public void onClick(View view) {
                 Places places1 = new Places();
                 //  List<Places> placesList=new ArrayList<>();
+                if (TextUtils.isEmpty(firstName.getText().toString())) {
+                    firstName.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(lastName.getText().toString())) {
+                    lastName.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(middleName.getText().toString())) {
+                    middleName.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
 
+            } else if (TextUtils.isEmpty(contactInfo.getText().toString())) {
+                    contactInfo.setError("This field is required");
+                Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+            } else if (TextUtils.isEmpty(gender.getText().toString())) {
+                    gender.setError("This field is required");
+                Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+            } else if (TextUtils.isEmpty(age.getText().toString())) {
+                    age.setError("This field is required");
+                Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+            } else if (TextUtils.isEmpty(ageautocomplete.getText().toString())) {
+                    ageautocomplete.setError("This field is required");
+                Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+            }
+                else if (TextUtils.isEmpty(edStreetAddress.getText().toString())) {
+                    edStreetAddress.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(edState.getText().toString())) {
+                    edState.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                }
+                else if (TextUtils.isEmpty(edCountry.getText().toString())) {
+                    edCountry.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(evacuationName.getText().toString())) {
+                    evacuationName.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                }
+                else {
 
                 places1.setFirstName(firstName.getText().toString());
                 places1.setLastName(lastName.getText().toString());
@@ -228,6 +266,8 @@ public class AddPlacesFragmentEvacuee extends Fragment {
 
 
             }
+
+         }
         });
 
         return v;

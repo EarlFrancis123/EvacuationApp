@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".StaffViewReportsActivityALLEvacuation"
+            android:exported="false" />
+        <activity
+            android:name=".StaffViewReportsActivityALLMaleAndFemale"
+            android:exported="false" />
+        <activity
             android:name=".ListAddedReliefGoodsActivity"
             android:exported="false" />
         <activity
@@ -26,9 +32,6 @@
             android:exported="false" />
         <activity
             android:name=".StaffViewReportsActivityEvacuation"
-            android:exported="false" />
-        <activity
-            android:name=".StaffViewReportsActivityGeneralReports"
             android:exported="false" />
         <activity
             android:name=".StaffViewReportsActivityMaleAndFemale"

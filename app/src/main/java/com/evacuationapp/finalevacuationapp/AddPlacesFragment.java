@@ -13,6 +13,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -151,37 +152,62 @@ public class AddPlacesFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                if (TextUtils.isEmpty(evacuationName.getText().toString())) {
+                    evacuationName.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(evacuationNumber.getText().toString())) {
+                    evacuationNumber.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(evacuationBarangay.getText().toString())) {
+                    evacuationBarangay.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                }else if (TextUtils.isEmpty(evacuationCalamityType.getText().toString())) {
+                    evacuationCalamityType.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                }else if (TextUtils.isEmpty(edStreetAddress.getText().toString())) {
+                    edStreetAddress.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                }else if (TextUtils.isEmpty(evacuationNumber.getText().toString())) {
+                    evacuationNumber.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                }else if (TextUtils.isEmpty(edState.getText().toString())) {
+                    edState.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                }
 
-                Places places=new Places();
-                //  List<Places> placesList=new ArrayList<>();
-                places.setEvacuationName(evacuationName.getText().toString());
-                places.setEvacuationNumber(evacuationNumber.getText().toString());
-                places.setEvacuationBarangay(evacuationBarangay.getText().toString());
-                places.setEvacuationCalamityType(evacuationCalamityType.getText().toString());
-                places.setStreetAddress(edStreetAddress.getText().toString());
-                places.setState(edState.getText().toString());
-                places.setCountry(edCountry);
-                places.setImage(encodeImage);
-                places.setLatitude(getLatLongFromAddress(requireContext(), places.getStreetAddress() + "," +
-                        places.getState() + "," +
-                        places.getCountry() + ",").latitude);
-                places.setLongitude(getLatLongFromAddress(requireContext(), places.getStreetAddress() + "," +
-                        places.getState() + "," +
-                        places.getCountry() + ",").longitude);
+
+                else {
+                    Places places = new Places();
+                    //  List<Places> placesList=new ArrayList<>();
+                    places.setEvacuationName(evacuationName.getText().toString());
+                    places.setEvacuationNumber(evacuationNumber.getText().toString());
+                    places.setEvacuationBarangay(evacuationBarangay.getText().toString());
+                    places.setEvacuationCalamityType(evacuationCalamityType.getText().toString());
+                    places.setStreetAddress(edStreetAddress.getText().toString());
+                    places.setState(edState.getText().toString());
+                    places.setCountry(edCountry);
+                    places.setImage(encodeImage);
+                    places.setLatitude(getLatLongFromAddress(requireContext(), places.getStreetAddress() + "," +
+                            places.getState() + "," +
+                            places.getCountry() + ",").latitude);
+                    places.setLongitude(getLatLongFromAddress(requireContext(), places.getStreetAddress() + "," +
+                            places.getState() + "," +
+                            places.getCountry() + ",").longitude);
 
 
-                databaseReference=firebaseDatabase.getReference().child("evacuation");
-                databaseReference.push().setValue(places);
-                Toast.makeText(getActivity(), "Evacuation Added Successfully", Toast.LENGTH_SHORT).show();
-                edCountry = String.valueOf(edCountry);
-                edState.setText("");
-                edStreetAddress.setText("");
-                evacuationName.setText("");
-                evacuationNumber.setText("");
-                evacuationBarangay.setText("");
-                evacuationCalamityType.setText("");
-                imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
+                    databaseReference = firebaseDatabase.getReference().child("evacuation");
+                    databaseReference.push().setValue(places);
+                    Toast.makeText(getActivity(), "Evacuation Added Successfully", Toast.LENGTH_SHORT).show();
+                    edCountry = String.valueOf(edCountry);
+                    edState.setText("");
+                    edStreetAddress.setText("");
+                    evacuationName.setText("");
+                    evacuationNumber.setText("");
+                    evacuationBarangay.setText("");
+                    evacuationCalamityType.setText("");
+                    imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
 
+                }
             }
         });
 

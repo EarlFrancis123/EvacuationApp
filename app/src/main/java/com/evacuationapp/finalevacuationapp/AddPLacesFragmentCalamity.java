@@ -12,6 +12,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -132,21 +133,33 @@ public class AddPLacesFragmentCalamity extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Places places=new Places();
-                //  List<Places> placesList=new ArrayList<>();
-                places.setCalamityName(edCalamityName.getText().toString());
-                places.setCalamityDetails(edCalamityDetails.getText().toString());
-                places.setEdCalamityDate(edCalamityDate.getText().toString());
-                places.setImage(encodeImage);
+                if (TextUtils.isEmpty(edCalamityName.getText().toString())) {
+                    edCalamityName.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(edCalamityDetails.getText().toString())) {
+                    edCalamityDetails.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(edCalamityDate.getText().toString())) {
+                    edCalamityDate.setError("This field is required");
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                }
+                 else {
+                    Places places = new Places();
+                    //  List<Places> placesList=new ArrayList<>();
+                    places.setCalamityName(edCalamityName.getText().toString());
+                    places.setCalamityDetails(edCalamityDetails.getText().toString());
+                    places.setEdCalamityDate(edCalamityDate.getText().toString());
+                    places.setImage(encodeImage);
 
-                databaseReference=firebaseDatabase.getReference().child("calamity");
-                databaseReference.push().setValue(places);
-                Toast.makeText(getActivity(), "Evacuation Added Successfully", Toast.LENGTH_SHORT).show();
+                    databaseReference = firebaseDatabase.getReference().child("calamity");
+                    databaseReference.push().setValue(places);
+                    Toast.makeText(getActivity(), "Evacuation Added Successfully", Toast.LENGTH_SHORT).show();
 
-                edCalamityName.setText("");
-                edCalamityDetails.setText("");
-                edCalamityDate.setText("");
-                imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
+                    edCalamityName.setText("");
+                    edCalamityDetails.setText("");
+                    edCalamityDate.setText("");
+                    imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
+                }
             }
         });
 

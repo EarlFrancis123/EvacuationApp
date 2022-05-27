@@ -1,5 +1,6 @@
 package com.evacuationapp.finalevacuationapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -8,18 +9,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class AddReliefGoodsActivity extends AppCompatActivity {
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,databaseReference2;
     FirebaseDatabase firebaseDatabase;
-    EditText EdAddReliefGoodsEvacuationName, EdAddReliefGoodsFood, EdAddReliefGoodsFoodPerPerson,EdAddReliefGoodsWater,EdAddReliefGoodsWaterPerPerson,EdAddReliefGoodsSponsor,EdAddReliefGoodsDate,EdAddReliefGoodsMealFor;
+    EditText  EdAddReliefGoodsFood, EdAddReliefGoodsFoodPerPerson,EdAddReliefGoodsWater,EdAddReliefGoodsWaterPerPerson,EdAddReliefGoodsSponsor,EdAddReliefGoodsDate,EdAddReliefGoodsMealFor;
     Button btnSave;
+    AutoCompleteTextView EdAddReliefGoodsEvacuationName ;
+    ArrayAdapter<String> adapterItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +46,29 @@ public class AddReliefGoodsActivity extends AppCompatActivity {
         EdAddReliefGoodsMealFor= findViewById(R.id.edAddReliefGoodsMealFor);
         btnSave = findViewById(R.id.btnSave);
 
+        databaseReference2=firebaseDatabase.getReference().child("evacuation");
+        databaseReference2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList array= new ArrayList<>();
+                for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
+                    String value2 = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
+                    array.add(value2);
+                }
+                adapterItems = new ArrayAdapter<String>(AddReliefGoodsActivity.this,R.layout.list_item,array);
+                EdAddReliefGoodsEvacuationName.setAdapter(adapterItems);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        EdAddReliefGoodsEvacuationName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+            }
+        });
 
 
 

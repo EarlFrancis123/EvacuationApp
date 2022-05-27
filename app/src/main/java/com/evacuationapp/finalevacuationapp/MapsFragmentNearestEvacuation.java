@@ -114,13 +114,8 @@ public class MapsFragmentNearestEvacuation extends Fragment {
 
                         result.add((double) haversine(lt.getuserLatitude(),lt.getuserLongitude(),placesList.get(i).getLatitude(), placesList.get(i).getLongitude()));
                         address=new LatLng(placesList.get(i).getLatitude(),placesList.get(i).getLongitude());
-                        byte[] imageAsByte = Base64.decode(placesList.get(i).getImage().getBytes(), Base64.DEFAULT);
-                        Bitmap bitmap = BitmapFactory.decodeByteArray(imageAsByte, 0, imageAsByte.length);
                         googleMap.addMarker(new MarkerOptions().position(address)
-                                .title(placesList.get(i).getStreetAddress()+", " + String.valueOf(String.format("%.02f",result.get(i*2)))+" KM"))
-                                .setIcon(BitmapDescriptorFactory.fromBitmap(bitmap));
-
-
+                                .title(placesList.get(i).getEvacuationName()+", " + String.valueOf(String.format("%.02f",result.get(i*2)))+" KM"));
                         if (i==0)
                             googleMap.moveCamera(CameraUpdateFactory.newLatLng(address));
                     }catch (Exception e){}

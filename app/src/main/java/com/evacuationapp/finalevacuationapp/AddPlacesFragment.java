@@ -18,6 +18,9 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -48,6 +51,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import me.shaohui.advancedluban.Luban;
@@ -100,13 +104,14 @@ public class AddPlacesFragment extends Fragment {
         }
     }
 
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, databaseReference2;
     FirebaseDatabase firebaseDatabase;
-    EditText edStreetAddress, edState,evacuationName,evacuationNumber,evacuationCalamityType,evacuationBarangay;
+    EditText edStreetAddress, edState,evacuationName,evacuationNumber,evacuationBarangay;
     Button btnSave;
     String edCountry;
     ImageView imgPlace;
-
+    AutoCompleteTextView evacuationCalamityType;
+    ArrayAdapter<String> adapterItems;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -123,8 +128,35 @@ public class AddPlacesFragment extends Fragment {
         evacuationName = v.findViewById(R.id.edEvacuationName);
         evacuationNumber = v.findViewById(R.id.edEvacuationNumber);
         evacuationBarangay = v.findViewById(R.id.edEvacuationBaranggay);
-        evacuationCalamityType = v.findViewById(R.id.edcalamityType);
+        evacuationCalamityType = v.findViewById(R.id.auto_complete_txt_CalamityType);
 
+
+        databaseReference2=firebaseDatabase.getReference().child("calamity");
+        databaseReference2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList array= new ArrayList<>();
+                for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
+                    String value2 = String.valueOf(dataSnapshot2.child("calamityName").getValue());
+                    array.add(value2);
+                }
+                adapterItems = new ArrayAdapter<String>(getContext().getApplicationContext(),R.layout.list_item,array);
+                evacuationCalamityType.setAdapter(adapterItems);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        evacuationCalamityType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+            }
+        });
 
 
 

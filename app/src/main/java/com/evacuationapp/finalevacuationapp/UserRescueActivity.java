@@ -157,13 +157,16 @@ public class UserRescueActivity extends AppCompatActivity {
                         smsManager.sendTextMessage(value, null, NotificationMessage, null, null);
 
                         Toast.makeText(getApplicationContext()
-                                , "SMS sent successfully!", Toast.LENGTH_LONG).show();
+                                , "Sending!", Toast.LENGTH_LONG).show();
 
                     } else {
                         Toast.makeText(getApplicationContext()
                                 , "Enter value First.", Toast.LENGTH_SHORT).show();
                     }
                 }
+                Toast.makeText(getApplicationContext()
+                        , "SMS Sent Successfully! ", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override

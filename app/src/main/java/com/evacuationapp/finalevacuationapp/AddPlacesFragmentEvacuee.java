@@ -45,6 +45,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import me.shaohui.advancedluban.Luban;
@@ -99,18 +100,19 @@ public class AddPlacesFragmentEvacuee extends Fragment {
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference2;
+    DatabaseReference databaseReference3;
     FirebaseDatabase firebaseDatabase2;
-    EditText firstName, lastName, middleName, contactInfo,age,address,barangay,headOfFamily,evacuationName,edStreetAddress,edState;
+    EditText firstName, lastName, middleName, contactInfo,age,address,barangay,headOfFamily,edStreetAddress,edState;
     Button btnSave;
     ImageView imgPlace;
     String[] items =  {"Male","Fe Male"};
     String[] items2 =  {"Minor","Adult","Senior Citizen"};
     String[] items3 =  {"Philippines"};
-    AutoCompleteTextView gender,ageautocomplete,edCountry;
+    AutoCompleteTextView gender,ageautocomplete,edCountry,evacuationName;
     ArrayAdapter<String> adapterItems;
     ArrayAdapter<String> adapterItems2;
     ArrayAdapter<String> adapterItems3;
-
+    ArrayAdapter<String> adapterItems4;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -127,7 +129,7 @@ public class AddPlacesFragmentEvacuee extends Fragment {
         edStreetAddress = v.findViewById(R.id.edStreet);
         edState = v.findViewById(R.id.edState);
         edCountry = v.findViewById(R.id.auto_complete_txt_country);
-        evacuationName = v.findViewById(R.id.edEvacueeEvacuation);
+        evacuationName = v.findViewById(R.id.auto_complete_txt_evacuationName);
         firebaseDatabase2 = FirebaseDatabase.getInstance();
         btnSave = v.findViewById(R.id.btnSave);
         imgPlace = v.findViewById(R.id.imgPlace);
@@ -140,6 +142,31 @@ public class AddPlacesFragmentEvacuee extends Fragment {
         gender.setAdapter(adapterItems);
         ageautocomplete.setAdapter(adapterItems2);
         edCountry.setAdapter(adapterItems3);
+
+        databaseReference3=firebaseDatabase.getReference().child("evacuation");
+        databaseReference3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList array= new ArrayList<>();
+                for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
+                    String value2 = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
+                    array.add(value2);
+                }
+                adapterItems4 = new ArrayAdapter<String>(getContext().getApplicationContext(),R.layout.list_item,array);
+                evacuationName.setAdapter(adapterItems4);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        evacuationName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+            }
+        });
         gender.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

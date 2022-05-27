@@ -91,6 +91,12 @@
         <entry key="..\:/Capstone/FinalCapstoneProject/app/src/main/res/menu/main_menu.xml" value="0.325" />
         <entry key="..\:/Capstone/FinalCapstoneProject/app/src/main/res/menu/searchmenu.xml" value="0.36666666666666664" />
         <entry key="..\:/Capstone/FinalCapstoneProject/app/src/main/res/menu/staff_menu.xml" value="0.325" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_add_relief_goods.xml" value="0.18802083333333333" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_staff_notify_all_evacuee.xml" value="0.18802083333333333" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_add_p_laces_calamity.xml" value="0.18802083333333333" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_add_places.xml" value="0.18802083333333333" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_add_places_evacuee.xml" value="0.18802083333333333" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_add_places_nearest_evacuation.xml" value="0.18802083333333333" />
         <entry key="..\:/FinaCapstoneProject/EvacuationApp/app/src/main/res/layout/activity_add_relief_goods.xml" value="0.18802083333333333" />
         <entry key="..\:/FinaCapstoneProject/EvacuationApp/app/src/main/res/layout/activity_list_added_relief_goods.xml" value="0.18802083333333333" />
         <entry key="..\:/FinaCapstoneProject/EvacuationApp/app/src/main/res/layout/activity_staff_add_calamity.xml" value="0.18802083333333333" />

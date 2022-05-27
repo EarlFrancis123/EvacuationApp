@@ -112,11 +112,9 @@ public class MapsFragment extends Fragment {
                                 placesList.get(i).getState()+","+
                                 placesList.get(i).getCountry()+",";
                         address=new LatLng(placesList.get(i).getLatitude(),placesList.get(i).getLongitude());
-                        byte[] imageAsByte = Base64.decode(placesList.get(i).getImage().getBytes(), Base64.DEFAULT);
-                        Bitmap bitmap = BitmapFactory.decodeByteArray(imageAsByte, 0, imageAsByte.length);
                         googleMap.addMarker(new MarkerOptions().position(address)
-                                .title(placesList.get(i).getStreetAddress()))
-                                .setIcon(BitmapDescriptorFactory.fromBitmap(bitmap));
+                                .title(placesList.get(i).getStreetAddress()));
+
                         if (i==0)
                             googleMap.moveCamera(CameraUpdateFactory.newLatLng(address));
                     }catch (Exception e){}

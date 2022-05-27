@@ -94,13 +94,15 @@ public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
                         smsManager.sendTextMessage(value, null, sMessage, null, null);
 
                         Toast.makeText(getApplicationContext()
-                                , "SMS sent successfully!", Toast.LENGTH_LONG).show();
+                                , "Sending!", Toast.LENGTH_LONG).show();
 
                     } else {
                         Toast.makeText(getApplicationContext()
                                 , "Enter value First.", Toast.LENGTH_SHORT).show();
                     }
                 }
+                Toast.makeText(getApplicationContext()
+                        , "SMS Sent Successfully! ", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -128,7 +130,7 @@ public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
                             smsManager.sendTextMessage(value1, null, sMessage, null, null);
 
                             Toast.makeText(getApplicationContext()
-                                    , "SMS sent successfully!", Toast.LENGTH_LONG).show();
+                                    , "Sending!", Toast.LENGTH_LONG).show();
 
                         } else {
                             Toast.makeText(getApplicationContext()
@@ -136,9 +138,11 @@ public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
                         }
                     }else{
                         Toast.makeText(getApplicationContext()
-                                , "Evacuation not found ", Toast.LENGTH_SHORT).show();
+                                , "Sending! ", Toast.LENGTH_SHORT).show();
                     }
                 }
+                Toast.makeText(getApplicationContext()
+                        , "SMS Sent Successfully! ", Toast.LENGTH_SHORT).show();
             }
 
             @Override

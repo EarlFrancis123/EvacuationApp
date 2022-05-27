@@ -30,25 +30,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/evacueeFnameLO"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
-                android:hint="Evacuation Center Name"
-                app:startIconDrawable="@drawable/ic_baseline_name"
-                >
+                android:hint="Evacuation Name"
+                app:startIconDrawable="@drawable/ic_baseline_name">
 
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edEvacuationName"
+                <AutoCompleteTextView
+                    android:id="@+id/auto_complete_txt_evacuation"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp" />
+                    android:layout_height="50dp"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/evacueeLnameLO"

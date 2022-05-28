@@ -43,7 +43,7 @@ public class StaffViewReportsActivityALLEvacuation extends AppCompatActivity {
         pieChart = findViewById(R.id.activity_main_piechart);
         setupPieChart();
 
-        EvacuationsearchED = findViewById(R.id.evacuationsearchED);
+
         sample = String.valueOf(EvacuationsearchED);
         MaleTV = findViewById(R.id.maleTV);
         FemaleTV = findViewById(R.id.femaleTV);

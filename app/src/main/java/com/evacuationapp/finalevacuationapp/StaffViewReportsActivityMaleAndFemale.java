@@ -3,6 +3,9 @@ package com.evacuationapp.finalevacuationapp;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.protobuf.StringValue;
 
 import java.util.ArrayList;
 
@@ -33,23 +37,63 @@ import androidx.recyclerview.widget.RecyclerView;
 public class StaffViewReportsActivityMaleAndFemale extends AppCompatActivity {
     private PieChart pieChart;
 
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    EditText EvacuationsearchED;
+    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
+
     String sample ;
     Button ButtonSearchBtn;
     TextView MaleTV, FemaleTV;
     String searchtext;
+    DatabaseReference databaseReference2;
+    FirebaseDatabase firebaseDatabase2;
+    AutoCompleteTextView EvacuationsearchED;
+    ArrayAdapter<String> adapterItems;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_view_reports_male_and_female);
         pieChart = findViewById(R.id.activity_main_piechart);
         setupPieChart();
-
-        EvacuationsearchED = findViewById(R.id.evacuationsearchED);
+        firebaseDatabase2 = FirebaseDatabase.getInstance();
+        EvacuationsearchED = findViewById(R.id.auto_complete_txt_evacuationName);
         ButtonSearchBtn = findViewById(R.id.buttonSearchBtn);
-        sample = String.valueOf(EvacuationsearchED);
+
         MaleTV = findViewById(R.id.maleTV);
         FemaleTV = findViewById(R.id.femaleTV);
+
+        try {
+            databaseReference2=firebaseDatabase2.getReference().child("evacuation");
+            databaseReference2.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    ArrayList array = new ArrayList<>();
+                    for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
+                        String value2 = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
+                        array.add(value2);
+                    }
+                    adapterItems = new ArrayAdapter<String>(StaffViewReportsActivityMaleAndFemale.this.getApplicationContext(), R.layout.list_item, array);
+                    EvacuationsearchED.setAdapter(adapterItems);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            EvacuationsearchED.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String item = parent.getItemAtPosition(position).toString();
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(StaffViewReportsActivityMaleAndFemale.this, String.valueOf(e), Toast.LENGTH_SHORT).show();
+
+        }
+
+
+
+
+
 
 
         ButtonSearchBtn.setOnClickListener(new View.OnClickListener() {

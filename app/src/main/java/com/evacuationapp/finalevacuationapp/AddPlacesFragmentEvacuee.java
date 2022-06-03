@@ -38,6 +38,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -101,6 +102,8 @@ public class AddPlacesFragmentEvacuee extends Fragment {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference2;
     DatabaseReference databaseReference3;
+    DatabaseReference databaseReference5;
+    DatabaseReference databaseReference4= FirebaseDatabase.getInstance().getReference();
     FirebaseDatabase firebaseDatabase2;
     EditText firstName, lastName, middleName, contactInfo,age,address,barangay,headOfFamily,edStreetAddress,edState;
     Button btnSave;
@@ -108,11 +111,13 @@ public class AddPlacesFragmentEvacuee extends Fragment {
     String[] items =  {"Male","Fe Male"};
     String[] items2 =  {"Minor","Adult","Senior Citizen"};
     String[] items3 =  {"Philippines"};
-    AutoCompleteTextView gender,ageautocomplete,edCountry,evacuationName;
+    String[] items5 =  {"Have", "None"};
+    AutoCompleteTextView gender,ageautocomplete,edCountry,evacuationName, disability;
     ArrayAdapter<String> adapterItems;
     ArrayAdapter<String> adapterItems2;
     ArrayAdapter<String> adapterItems3;
     ArrayAdapter<String> adapterItems4;
+    ArrayAdapter<String> adapterItems5;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -124,7 +129,7 @@ public class AddPlacesFragmentEvacuee extends Fragment {
         lastName = v.findViewById(R.id.edEvacueeLastName);
         middleName = v.findViewById(R.id.edEvacueeMiddleName);
         contactInfo = v.findViewById(R.id.edEvacueeContactNumber);
-
+        disability = v.findViewById(R.id.auto_complete_txt_disability);
         age = v.findViewById(R.id.edEvacueeAge);
         edStreetAddress = v.findViewById(R.id.edStreet);
         edState = v.findViewById(R.id.edState);
@@ -139,10 +144,11 @@ public class AddPlacesFragmentEvacuee extends Fragment {
         adapterItems = new ArrayAdapter<String>(getContext().getApplicationContext(),R.layout.list_item,items);
         adapterItems2 = new ArrayAdapter<String>(getContext().getApplicationContext(),R.layout.list_item,items2);
         adapterItems3 = new ArrayAdapter<String>(getContext().getApplicationContext(),R.layout.list_item,items3);
+        adapterItems5 = new ArrayAdapter<String>(getContext().getApplicationContext(),R.layout.list_item,items5);
         gender.setAdapter(adapterItems);
         ageautocomplete.setAdapter(adapterItems2);
         edCountry.setAdapter(adapterItems3);
-
+        disability.setAdapter(adapterItems5);
         databaseReference3=firebaseDatabase.getReference().child("evacuation");
         databaseReference3.addValueEventListener(new ValueEventListener() {
             @Override
@@ -162,6 +168,12 @@ public class AddPlacesFragmentEvacuee extends Fragment {
             }
         });
         evacuationName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+            }
+        });
+        disability.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
@@ -213,6 +225,7 @@ public class AddPlacesFragmentEvacuee extends Fragment {
             @Override
             public void onClick(View view) {
                 Places places1 = new Places();
+                Places places2 = new Places();
                 //  List<Places> placesList=new ArrayList<>();
                 if (TextUtils.isEmpty(firstName.getText().toString())) {
                     firstName.setError("This field is required");
@@ -253,6 +266,20 @@ public class AddPlacesFragmentEvacuee extends Fragment {
                 }
                 else {
 
+
+try {
+
+    Query countQuery = databaseReference4.child("Capacity").child(evacuationName.getText().toString());
+    countQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot snapshot) {
+
+
+            String value2 = String.valueOf(snapshot.child("evacuationCapacity").getValue());
+            String value3 = String.valueOf(snapshot.child("totalEvacuee").getValue());
+
+            if (Integer.parseInt(value3) < Integer.parseInt(value2)) {
+
                 places1.setFirstName(firstName.getText().toString());
                 places1.setLastName(lastName.getText().toString());
                 places1.setMiddleName(middleName.getText().toString());
@@ -263,6 +290,7 @@ public class AddPlacesFragmentEvacuee extends Fragment {
                 places1.setStreetAddress(edStreetAddress.getText().toString());
                 places1.setState(edState.getText().toString());
                 places1.setCountry(edCountry.getText().toString());
+                places1.setDisability(disability.getText().toString());
                 places1.setEvacuationName(evacuationName.getText().toString());
                 places1.setLatitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
                         places1.getState() + "," +
@@ -270,9 +298,21 @@ public class AddPlacesFragmentEvacuee extends Fragment {
                 places1.setLongitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
                         places1.getState() + "," +
                         places1.getCountry() + ",").longitude);
+                databaseReference5 = FirebaseDatabase.getInstance().getReference("Capacity").child(evacuationName.getText().toString()).child("totalEvacuee");
+                databaseReference5.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        long totalevacuee =(long) dataSnapshot.getValue();
+                        databaseReference5.setValue(totalevacuee + 1);
+                    }
 
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
                 places1.setImage(encodeImage);
-                databaseReference=firebaseDatabase.getReference().child("evacuee");
+                databaseReference = firebaseDatabase.getReference().child("evacuee");
                 databaseReference.push().setValue(places1);
                 Toast.makeText(getActivity(), "Dara Added Successfully", Toast.LENGTH_SHORT).show();
                 firstName.setText("");
@@ -288,8 +328,25 @@ public class AddPlacesFragmentEvacuee extends Fragment {
                 evacuationName.setText("");
 
 
-
                 imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
+
+
+            }else {
+                Toast.makeText(getContext().getApplicationContext(), "Evacuation Full", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    });
+} catch (Exception e){
+    Toast.makeText(getContext().getApplicationContext(), String.valueOf(e), Toast.LENGTH_SHORT).show();
+}
+
+
 
 
             }
@@ -299,6 +356,7 @@ public class AddPlacesFragmentEvacuee extends Fragment {
 
         return v;
     }
+
 
     LatLng getLatLongFromAddress(Context context, String strAddress) {
         Geocoder geocoder = new Geocoder(context);

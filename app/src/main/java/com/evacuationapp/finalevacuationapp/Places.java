@@ -1,12 +1,20 @@
 package com.evacuationapp.finalevacuationapp;
 
 public class Places {
-    String streetAddress,state,country,image,evacuationName,evacuationNumber,evacuationCalamityType,evacuationBarangay,calamityName,calamityDetails;
-    String firstName, lastName, middleName, contactInfo,gender,address,barangay,headOfFamily;
+    String streetAddress,state,country,image,evacuationName,evacuationNumber,evacuationCalamityType,evacuationBarangay,calamityName,calamityDetails,disability, evacuationCapacity;
+    String firstName;
+    String lastName;
+    String middleName;
+    String contactInfo;
+    String gender;
+    String address;
+    String barangay;
+    String headOfFamily;
+    int totalEvacuee;
     String  AddReliefGoodsEvacuationName, AddReliefGoodsFood, AddReliefGoodsFoodPerPerson,AddReliefGoodsWater,AddReliefGoodsWaterPerPerson,AddReliefGoodsSponsor,AddReliefGoodsDate;
     String age,ageautocomplete,AddReliefGoodsMealFor,edCalamityDate;
     double latitude,longitude;
-    int totalevacuation;
+
 
     public String getAgeautocomplete() {
         return ageautocomplete;
@@ -14,6 +22,30 @@ public class Places {
 
     public void setAgeautocomplete(String ageautocomplete) {
         this.ageautocomplete = ageautocomplete;
+    }
+
+    public String getEvacuationCapacity() {
+        return evacuationCapacity;
+    }
+
+    public int getTotalEvacuee() {
+        return totalEvacuee;
+    }
+
+    public void setTotalEvacuee(int totalEvacuee) {
+        this.totalEvacuee = totalEvacuee;
+    }
+
+    public void setEvacuationCapacity(String evacuationCapacity) {
+        this.evacuationCapacity = evacuationCapacity;
+    }
+
+    public String getDisability() {
+        return disability;
+    }
+
+    public void setDisability(String disability) {
+        this.disability = disability;
     }
 
     public String getAddReliefGoodsMealFor() {
@@ -88,13 +120,7 @@ public class Places {
         AddReliefGoodsDate = addReliefGoodsDate;
     }
 
-    public int getTotalevacuation() {
-        return totalevacuation;
-    }
 
-    public void setTotalevacuation(int totalevacuation) {
-        this.totalevacuation = totalevacuation;
-    }
 
     public String getFirstName() {
         return firstName;

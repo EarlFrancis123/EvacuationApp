@@ -39,7 +39,7 @@ public class StaffViewReportsActivityEvacuation extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     String sample ;
-    TextView MinorTV, SeniorTV,AdultsTV;
+    TextView MinorTV, SeniorTV,AdultsTV, DisabilityTV;
 
     Button ButtonSearchBtn;
     DatabaseReference databaseReference2;
@@ -57,6 +57,7 @@ public class StaffViewReportsActivityEvacuation extends AppCompatActivity {
         sample = String.valueOf(EvacuationsearchED);
         MinorTV = findViewById(R.id.minorTV);
         SeniorTV = findViewById(R.id.seniorTV);
+        DisabilityTV = findViewById(R.id.disabilityTV);
         firebaseDatabase2 = FirebaseDatabase.getInstance();
         AdultsTV = findViewById(R.id.adultsTV);
 
@@ -93,27 +94,6 @@ public class StaffViewReportsActivityEvacuation extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         ButtonSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,7 +127,7 @@ public class StaffViewReportsActivityEvacuation extends AppCompatActivity {
                         for (int color : ColorTemplate.VORDIPLOM_COLORS) {
                             colors.add(color);
                         }
-                        PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
+                        PieDataSet dataSet = new PieDataSet(entries, "Evacuation");
                         dataSet.setColors(colors);
 
                         PieData data = new PieData(dataSet);
@@ -196,7 +176,7 @@ public class StaffViewReportsActivityEvacuation extends AppCompatActivity {
                         }
                         for (int color : ColorTemplate.VORDIPLOM_COLORS) {
                             colors.add(color);
-                            PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
+                            PieDataSet dataSet = new PieDataSet(entries, "Evacuation");
                             dataSet.setColors(colors);
 
                             PieData data = new PieData(dataSet);
@@ -242,7 +222,57 @@ public class StaffViewReportsActivityEvacuation extends AppCompatActivity {
                         }
                         for (int color : ColorTemplate.VORDIPLOM_COLORS) {
                             colors.add(color);
-                            PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
+                            PieDataSet dataSet = new PieDataSet(entries, "Evacuation");
+                            dataSet.setColors(colors);
+
+                            PieData data = new PieData(dataSet);
+                            data.setDrawValues(true);
+                            data.setValueFormatter(new PercentFormatter(pieChart));
+                            data.setValueTextSize(12f);
+                            data.setValueTextColor(Color.BLACK);
+
+                            pieChart.setData(data);
+                            pieChart.invalidate();
+
+                            pieChart.animateY(1400, Easing.EaseInOutQuad);
+
+
+
+                        }
+
+                    }
+                    @Override
+                    public void onCancelled( DatabaseError error) {
+
+                    }
+                });
+                Query countQuery4 = databaseReference.child("evacuee");
+                countQuery4.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        int count = 0;
+                        for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
+                            String value = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
+
+                            if(value.equals( EvacuationsearchED.getText().toString())){
+                                String value2 = String.valueOf(dataSnapshot2.child("disability").getValue());
+                                if(value2.equals("Have")){
+                                    count++;
+                                }
+                            }
+                            else {
+                                Toast.makeText(StaffViewReportsActivityEvacuation.this, "No Record", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                        entries.add(new PieEntry(count,"Disability"));
+                        DisabilityTV.setText(String.valueOf(count));
+                        for (int color: ColorTemplate.MATERIAL_COLORS) {
+                            colors.add(color);
+                        }
+                        for (int color : ColorTemplate.VORDIPLOM_COLORS) {
+                            colors.add(color);
+                            PieDataSet dataSet = new PieDataSet(entries, "Evacuation");
                             dataSet.setColors(colors);
 
                             PieData data = new PieData(dataSet);

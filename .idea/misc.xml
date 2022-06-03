@@ -101,6 +101,7 @@
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_add_places.xml" value="0.18802083333333333" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_add_places_evacuee.xml" value="0.18802083333333333" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_add_places_nearest_evacuation.xml" value="0.18802083333333333" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/places_layout_evacuation.xml" value="0.358695652173913" />
         <entry key="..\:/FinaCapstoneProject/EvacuationApp/app/src/main/res/layout/activity_add_relief_goods.xml" value="0.18802083333333333" />
         <entry key="..\:/FinaCapstoneProject/EvacuationApp/app/src/main/res/layout/activity_list_added_relief_goods.xml" value="0.18802083333333333" />
         <entry key="..\:/FinaCapstoneProject/EvacuationApp/app/src/main/res/layout/activity_staff_add_calamity.xml" value="0.18802083333333333" />

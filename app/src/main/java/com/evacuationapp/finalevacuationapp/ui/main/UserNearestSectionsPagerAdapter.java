@@ -36,9 +36,9 @@ public class UserNearestSectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case 0:return new AddPlacesFragmentNearestEvacuation();
-            case 1:return new ListFragmentNearestEvacuation();
-            case 2:return new MapsFragmentNearestEvacuation();
+
+            case 0:return new ListFragmentNearestEvacuation();
+            case 1:return new MapsFragmentNearestEvacuation();
             default: return PlaceholderFragment.newInstance(position + 1);
         }
     }
@@ -51,6 +51,6 @@ public class UserNearestSectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 }

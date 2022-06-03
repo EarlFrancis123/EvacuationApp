@@ -104,9 +104,9 @@ public class AddPlacesFragment extends Fragment {
         }
     }
 
-    DatabaseReference databaseReference, databaseReference2;
+    DatabaseReference databaseReference, databaseReference2,databaseReference3;
     FirebaseDatabase firebaseDatabase;
-    EditText edStreetAddress, edState,evacuationName,evacuationNumber,evacuationBarangay;
+    EditText edStreetAddress, edState,evacuationName,evacuationNumber,evacuationBarangay, evacuationCapacity;
     Button btnSave;
     String edCountry;
     ImageView imgPlace;
@@ -122,6 +122,7 @@ public class AddPlacesFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         edStreetAddress = v.findViewById(R.id.edStreet);
         edState = v.findViewById(R.id.edState);
+evacuationCapacity = v.findViewById(R.id.edEvacuationCapacity);
         edCountry = "Philippines";
         btnSave = v.findViewById(R.id.btnSave);
         imgPlace = v.findViewById(R.id.imgPlace);
@@ -209,36 +210,46 @@ public class AddPlacesFragment extends Fragment {
 
 
                 else {
-                    Places places = new Places();
-                    //  List<Places> placesList=new ArrayList<>();
-                    places.setEvacuationName(evacuationName.getText().toString());
-                    places.setEvacuationNumber(evacuationNumber.getText().toString());
-                    places.setEvacuationBarangay(evacuationBarangay.getText().toString());
-                    places.setEvacuationCalamityType(evacuationCalamityType.getText().toString());
-                    places.setStreetAddress(edStreetAddress.getText().toString());
-                    places.setState(edState.getText().toString());
-                    places.setCountry(edCountry);
-                    places.setImage(encodeImage);
-                    places.setLatitude(getLatLongFromAddress(requireContext(), places.getStreetAddress() + "," +
-                            places.getState() + "," +
-                            places.getCountry() + ",").latitude);
-                    places.setLongitude(getLatLongFromAddress(requireContext(), places.getStreetAddress() + "," +
-                            places.getState() + "," +
-                            places.getCountry() + ",").longitude);
+                    try {
+                        Places places = new Places();
+                        Places places2 = new Places();
+                        //  List<Places> placesList=new ArrayList<>();
+                        int totalevacuue = 0;
+                        places.setEvacuationName(evacuationName.getText().toString());
+                        places.setEvacuationNumber(evacuationNumber.getText().toString());
+                        places.setEvacuationBarangay(evacuationBarangay.getText().toString());
+                        places.setEvacuationCalamityType(evacuationCalamityType.getText().toString());
+                        places.setStreetAddress(edStreetAddress.getText().toString());
+                        places.setState(edState.getText().toString());
+                        places.setCountry(edCountry);
+                        places.setImage(encodeImage);
+                        places.setLatitude(getLatLongFromAddress(requireContext(), places.getStreetAddress() + "," +
+                                places.getState() + "," +
+                                places.getCountry() + ",").latitude);
+                        places.setLongitude(getLatLongFromAddress(requireContext(), places.getStreetAddress() + "," +
+                                places.getState() + "," +
+                                places.getCountry() + ",").longitude);
+                        places2.setEvacuationCapacity(evacuationCapacity.getText().toString());
+                        places2.setTotalEvacuee(totalevacuue);
+
+                        databaseReference3 = firebaseDatabase.getReference("Capacity").child(evacuationName.getText().toString());
+                        databaseReference3.setValue(places2);
+                        databaseReference = firebaseDatabase.getReference().child("evacuation");
+                        databaseReference.push().setValue(places);
+                        Toast.makeText(getActivity(), "Evacuation Added Successfully", Toast.LENGTH_SHORT).show();
+                        edCountry = String.valueOf(edCountry);
+                        edState.setText("");
+                        edStreetAddress.setText("");
+                        evacuationName.setText("");
+                        evacuationNumber.setText("");
+                        evacuationBarangay.setText("");
+                        evacuationCalamityType.setText("");
+                        imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
 
 
-                    databaseReference = firebaseDatabase.getReference().child("evacuation");
-                    databaseReference.push().setValue(places);
-                    Toast.makeText(getActivity(), "Evacuation Added Successfully", Toast.LENGTH_SHORT).show();
-                    edCountry = String.valueOf(edCountry);
-                    edState.setText("");
-                    edStreetAddress.setText("");
-                    evacuationName.setText("");
-                    evacuationNumber.setText("");
-                    evacuationBarangay.setText("");
-                    evacuationCalamityType.setText("");
-                    imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
-
+                    }catch (Exception e){
+                        Toast.makeText(getContext().getApplicationContext(), String.valueOf(e), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

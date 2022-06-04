@@ -8,25 +8,27 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_width="253dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginRight="140dp"
         android:drawableStart="@drawable/ic_baseline_calamity"
         android:hint="Evacuation Name"
-        android:layout_marginRight="140dp"
         app:helperTextTextColor="#FF0000"
         app:layout_constraintBottom_toTopOf="@+id/activity_main_piechart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         app:startIconDrawable="@drawable/ic_baseline_name">
 
         <AutoCompleteTextView
-            android:id="@+id/auto_complete_txt_evacuationName"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:id="@+id/auto_complete_txt_evacuationName2"
+            android:layout_width="236dp"
+            android:layout_height="55dp"
             android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,10 +51,12 @@
         android:id="@+id/buttonSearchBtn"
         android:layout_width="124dp"
         android:layout_height="56dp"
+        android:layout_marginTop="48dp"
         android:text="Search"
         app:layout_constraintBottom_toTopOf="@+id/activity_main_piechart"
-        app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

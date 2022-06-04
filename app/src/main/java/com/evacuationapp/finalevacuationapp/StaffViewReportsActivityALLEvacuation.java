@@ -1,9 +1,11 @@
 package com.evacuationapp.finalevacuationapp;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,169 +25,129 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.CollectionReference;
+import com.google.protobuf.StringValue;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class StaffViewReportsActivityALLEvacuation extends AppCompatActivity {
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    EditText EvacuationsearchED;
+    private PieChart pieChart;
+
+    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
+
     String sample ;
     Button ButtonSearchBtn;
-    TextView MaleTV, FemaleTV,SeniorTV;
+    TextView MaleTV, FemaleTV;
     String searchtext;
-    private PieChart pieChart;
-    @Override
+    DatabaseReference databaseReference2;
+    FirebaseDatabase firebaseDatabase2;
+    AutoCompleteTextView EvacuationsearchED;
+    ArrayAdapter<String> adapterItems;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_view_reports_allevacuation);
-        pieChart = findViewById(R.id.activity_main_piechart);
+        pieChart = findViewById(R.id.activity_main_piechart1);
         setupPieChart();
+        firebaseDatabase2 = FirebaseDatabase.getInstance();
+        EvacuationsearchED = findViewById(R.id.auto_complete_txt_evacuationName2);
+        ButtonSearchBtn = findViewById(R.id.buttonSearchBtn);
 
-
-        sample = String.valueOf(EvacuationsearchED);
         MaleTV = findViewById(R.id.maleTV);
         FemaleTV = findViewById(R.id.femaleTV);
-        SeniorTV= findViewById(R.id.seniorTV);
 
-        ArrayList<Integer> colors = new ArrayList<>();
-        ArrayList<PieEntry> entries = new ArrayList<>();
-        Query countQuery = databaseReference.child("evacuee");
-        countQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                int count = 0;
-                for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
-
-                    String value2 = String.valueOf(dataSnapshot2.child("ageautocomplete").getValue());
-                    if(value2.equals("Minor")){
-                        count++;
+        try {
+            databaseReference2=firebaseDatabase2.getReference().child("evacuation");
+            databaseReference2.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    ArrayList array = new ArrayList<>();
+                    for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
+                        String value2 = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
+                        array.add(value2);
                     }
+                    adapterItems = new ArrayAdapter<String>(StaffViewReportsActivityALLEvacuation.this.getApplicationContext(), R.layout.list_item, array);
+                    EvacuationsearchED.setAdapter(adapterItems);
                 }
-                entries.add(new PieEntry(count,"Minor"));
-                MaleTV.setText(String.valueOf(count));
-                for (int color: ColorTemplate.MATERIAL_COLORS) {
-                    colors.add(color);
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
                 }
-                for (int color : ColorTemplate.VORDIPLOM_COLORS) {
-                    colors.add(color);
+            });
+
+            EvacuationsearchED.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String item = parent.getItemAtPosition(position).toString();
                 }
-                PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
-                dataSet.setColors(colors);
+            });
+        }catch (Exception e){
+            Toast.makeText(StaffViewReportsActivityALLEvacuation.this, String.valueOf(e), Toast.LENGTH_SHORT).show();
 
-                PieData data = new PieData(dataSet);
-                data.setDrawValues(true);
-                data.setValueFormatter(new PercentFormatter(pieChart));
-                data.setValueTextSize(12f);
-                data.setValueTextColor(Color.BLACK);
-
-                pieChart.setData(data);
-                pieChart.invalidate();
-
-                pieChart.animateY(1400, Easing.EaseInOutQuad);
-
-
-
-
-                Toast.makeText(StaffViewReportsActivityALLEvacuation.this, String.valueOf(count), Toast.LENGTH_SHORT).show();
-            }
+        }
 
 
 
 
 
 
+
+        ButtonSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCancelled( DatabaseError error) {
+            public void onClick(View view) {
+                ArrayList<Integer> colors = new ArrayList<>();
+                ArrayList<PieEntry> entries = new ArrayList<>();
+                Query countQuery = databaseReference.child("Capacity").child(EvacuationsearchED.getText().toString());
+                countQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        int count,count2 ;
 
-            }
-        });
-        Query countQuery2 = databaseReference.child("evacuee");
-        countQuery2.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                int count = 0;
-                for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
+                                String value2 = String.valueOf(snapshot.child("evacuationCapacity").getValue());
+                        String value3 = String.valueOf(snapshot.child("totalEvacuee").getValue());
+                                count = Integer.parseInt(value2);
+                        count2 = Integer.parseInt(value3);
+                        entries.add(new PieEntry(count,"Vacant"));
+                        entries.add(new PieEntry(count2,"Occupied"));
+                        MaleTV.setText(String.valueOf(count));
+                        FemaleTV.setText(String.valueOf(count2));
+                        for (int color: ColorTemplate.MATERIAL_COLORS) {
+                            colors.add(color);
+                        }
+                        for (int color : ColorTemplate.VORDIPLOM_COLORS) {
+                            colors.add(color);
+                        }
+                        PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
+                        dataSet.setColors(colors);
 
-                    String value2 = String.valueOf(dataSnapshot2.child("ageautocomplete").getValue());
-                    if(value2.equals("Adult")){
-                        count++;
-                    }
+                        PieData data = new PieData(dataSet);
+                        data.setDrawValues(true);
+                        data.setValueFormatter(new PercentFormatter(pieChart));
+                        data.setValueTextSize(12f);
+                        data.setValueTextColor(Color.BLACK);
 
-                }
-                entries.add(new PieEntry(count,"Adult"));
-                FemaleTV.setText(String.valueOf(count));
-                for (int color: ColorTemplate.MATERIAL_COLORS) {
-                    colors.add(color);
-                }
-                for (int color : ColorTemplate.VORDIPLOM_COLORS) {
-                    colors.add(color);
-                    PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
-                    dataSet.setColors(colors);
+                        pieChart.setData(data);
+                        pieChart.invalidate();
+                        pieChart.animateY(1400, Easing.EaseInOutQuad);
 
-                    PieData data = new PieData(dataSet);
-                    data.setDrawValues(true);
-                    data.setValueFormatter(new PercentFormatter(pieChart));
-                    data.setValueTextSize(12f);
-                    data.setValueTextColor(Color.BLACK);
 
-                    pieChart.setData(data);
-                    pieChart.invalidate();
-
-                    pieChart.animateY(1400, Easing.EaseInOutQuad);
-                }
-            }
-            @Override
-            public void onCancelled( DatabaseError error) {
-
-            }
-        });
-        Query countQuery3 = databaseReference.child("evacuee");
-        countQuery3.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                int count = 0;
-                for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
-
-                    String value2 = String.valueOf(dataSnapshot2.child("ageautocomplete").getValue());
-                    if(value2.equals("Senior Citizen")){
-                        count++;
+                        Toast.makeText(StaffViewReportsActivityALLEvacuation.this, String.valueOf(count), Toast.LENGTH_SHORT).show();
                     }
 
-                }
-                entries.add(new PieEntry(count,"Senior Citizen"));
-                SeniorTV.setText(String.valueOf(count));
-                for (int color: ColorTemplate.MATERIAL_COLORS) {
-                    colors.add(color);
-                }
-                for (int color : ColorTemplate.VORDIPLOM_COLORS) {
-                    colors.add(color);
-                    PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
-                    dataSet.setColors(colors);
+                    @Override
+                    public void onCancelled( DatabaseError error) {
 
-                    PieData data = new PieData(dataSet);
-                    data.setDrawValues(true);
-                    data.setValueFormatter(new PercentFormatter(pieChart));
-                    data.setValueTextSize(12f);
-                    data.setValueTextColor(Color.BLACK);
-
-                    pieChart.setData(data);
-                    pieChart.invalidate();
-
-                    pieChart.animateY(1400, Easing.EaseInOutQuad);
-                }
-            }
-            @Override
-            public void onCancelled( DatabaseError error) {
-
-            }
-        });
-
-
+                    }
+                });
 
     }
+        });
 
+    }
 
     private void setupPieChart() {
         pieChart.setDrawHoleEnabled(true);

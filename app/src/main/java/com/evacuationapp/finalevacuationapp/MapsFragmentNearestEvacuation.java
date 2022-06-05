@@ -110,12 +110,12 @@ public class MapsFragmentNearestEvacuation extends Fragment {
                         String addr=placesList.get(i).getStreetAddress()+","+
                                 placesList.get(i).getState()+","+
                                 placesList.get(i).getCountry()+",";
-
-
                         result.add((double) haversine(lt.getuserLatitude(),lt.getuserLongitude(),placesList.get(i).getLatitude(), placesList.get(i).getLongitude()));
                         address=new LatLng(placesList.get(i).getLatitude(),placesList.get(i).getLongitude());
-                        googleMap.addMarker(new MarkerOptions().position(address)
-                                .title(placesList.get(i).getEvacuationName()+", " + String.valueOf(String.format("%.02f",result.get(i*2)))+" KM"));
+                        if(result.get(i*2) <= 2) {
+                            googleMap.addMarker(new MarkerOptions().position(address)
+                                    .title(placesList.get(i).getEvacuationName() + ", " + String.valueOf(String.format("%.02f", result.get(i * 2))) + " KM"));
+                        }
                         if (i==0)
                             googleMap.moveCamera(CameraUpdateFactory.newLatLng(address));
                     }catch (Exception e){}

@@ -231,6 +231,8 @@ evacuationCapacity = v.findViewById(R.id.edEvacuationCapacity);
                                 places.getCountry() + ",").longitude);
                         places2.setEvacuationCapacity(evacuationCapacity.getText().toString());
                         places2.setTotalEvacuee(totalevacuue);
+                        places.setEvacuationCapacity(evacuationCapacity.getText().toString());
+
 
                         databaseReference3 = firebaseDatabase.getReference("Capacity").child(evacuationName.getText().toString());
                         databaseReference3.setValue(places2);

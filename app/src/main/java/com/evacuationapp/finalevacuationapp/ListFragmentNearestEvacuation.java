@@ -166,7 +166,7 @@ public class ListFragmentNearestEvacuation extends Fragment {
                     "\n City : " + stringList.get(i).getStreetAddress() +
                     "\n State: " + stringList.get(i).getState() +
                     "\n Country: " + stringList.get(i).getCountry()+
-                    "\n Distance KM : " +   String.valueOf(String.format("%.02f",(haversine(lt.getuserLatitude(),lt.getuserLongitude(),placesList.get(i).getLatitude(), placesList.get(i).getLongitude())))));
+                    "\n Distance KM : " +   String.valueOf(String.format("%.02f",(haversine(lt.getuserLatitude(),lt.getuserLongitude(),placesList.get(i).getLatitude(), placesList.get(i).getLongitude()))))+ " KM");
 
             try {
 

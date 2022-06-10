@@ -224,7 +224,7 @@ public class AddPlacesFragmentEvacuee extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Places places1 = new Places();
+                EvacueeGettersSetters places1 = new EvacueeGettersSetters();
                 Places places2 = new Places();
                 //  List<Places> placesList=new ArrayList<>();
                 if (TextUtils.isEmpty(firstName.getText().toString())) {
@@ -237,19 +237,19 @@ public class AddPlacesFragmentEvacuee extends Fragment {
                     middleName.setError("This field is required");
                     Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
 
-            } else if (TextUtils.isEmpty(contactInfo.getText().toString())) {
+                } else if (TextUtils.isEmpty(contactInfo.getText().toString())) {
                     contactInfo.setError("This field is required");
-                Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
-            } else if (TextUtils.isEmpty(gender.getText().toString())) {
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(gender.getText().toString())) {
                     gender.setError("This field is required");
-                Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
-            } else if (TextUtils.isEmpty(age.getText().toString())) {
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(age.getText().toString())) {
                     age.setError("This field is required");
-                Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
-            } else if (TextUtils.isEmpty(ageautocomplete.getText().toString())) {
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(ageautocomplete.getText().toString())) {
                     ageautocomplete.setError("This field is required");
-                Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
-            }
+                    Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
+                }
                 else if (TextUtils.isEmpty(edStreetAddress.getText().toString())) {
                     edStreetAddress.setError("This field is required");
                     Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
@@ -267,91 +267,91 @@ public class AddPlacesFragmentEvacuee extends Fragment {
                 else {
 
 
-try {
+                    try {
 
-    Query countQuery = databaseReference4.child("Capacity").child(evacuationName.getText().toString());
-    countQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot snapshot) {
+                        Query countQuery = databaseReference4.child("Capacity").child(evacuationName.getText().toString());
+                        countQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
 
 
-            String value2 = String.valueOf(snapshot.child("evacuationCapacity").getValue());
-            String value3 = String.valueOf(snapshot.child("totalEvacuee").getValue());
+                                String value2 = String.valueOf(snapshot.child("evacuationCapacity").getValue());
+                                String value3 = String.valueOf(snapshot.child("totalEvacuee").getValue());
 
-            if (Integer.parseInt(value3) < Integer.parseInt(value2)) {
+                                if (Integer.parseInt(value3) < Integer.parseInt(value2)) {
 
-                places1.setFirstName(firstName.getText().toString());
-                places1.setLastName(lastName.getText().toString());
-                places1.setMiddleName(middleName.getText().toString());
-                places1.setContactInfo(contactInfo.getText().toString());
-                places1.setGender(gender.getText().toString());
-                places1.setAge(age.getText().toString());
-                places1.setAgeautocomplete(ageautocomplete.getText().toString());
-                places1.setStreetAddress(edStreetAddress.getText().toString());
-                places1.setState(edState.getText().toString());
-                places1.setCountry(edCountry.getText().toString());
-                places1.setDisability(disability.getText().toString());
-                places1.setEvacuationName(evacuationName.getText().toString());
-                places1.setLatitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
-                        places1.getState() + "," +
-                        places1.getCountry() + ",").latitude);
-                places1.setLongitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
-                        places1.getState() + "," +
-                        places1.getCountry() + ",").longitude);
-                databaseReference5 = FirebaseDatabase.getInstance().getReference("Capacity").child(evacuationName.getText().toString()).child("totalEvacuee");
-                databaseReference5.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        long totalevacuee =(long) dataSnapshot.getValue();
-                        databaseReference5.setValue(totalevacuee + 1);
+                                    places1.setFirstName(firstName.getText().toString());
+                                    places1.setLastName(lastName.getText().toString());
+                                    places1.setMiddleName(middleName.getText().toString());
+                                    places1.setContactInfo(contactInfo.getText().toString());
+                                    places1.setGender(gender.getText().toString());
+                                    places1.setAge(age.getText().toString());
+                                    places1.setAgeautocomplete(ageautocomplete.getText().toString());
+                                    places1.setStreetAddress(edStreetAddress.getText().toString());
+                                    places1.setState(edState.getText().toString());
+                                    places1.setCountry(edCountry.getText().toString());
+                                    places1.setDisability(disability.getText().toString());
+                                    places1.setEvacuationName(evacuationName.getText().toString());
+                                    places1.setLatitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
+                                            places1.getState() + "," +
+                                            places1.getCountry() + ",").latitude);
+                                    places1.setLongitude(getLatLongFromAddress(requireContext(), places1.getStreetAddress() + "," +
+                                            places1.getState() + "," +
+                                            places1.getCountry() + ",").longitude);
+                                    databaseReference5 = FirebaseDatabase.getInstance().getReference("Capacity").child(evacuationName.getText().toString()).child("totalEvacuee");
+                                    databaseReference5.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            long totalevacuee =(long) dataSnapshot.getValue();
+                                            databaseReference5.setValue(totalevacuee + 1);
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                    places1.setImage(encodeImage);
+                                    databaseReference = firebaseDatabase.getReference().child("evacuee");
+                                    databaseReference.push().setValue(places1);
+                                    Toast.makeText(getActivity(), "Dara Added Successfully", Toast.LENGTH_SHORT).show();
+                                    firstName.setText("");
+                                    lastName.setText("");
+                                    middleName.setText("");
+                                    contactInfo.setText("");
+                                    gender.setText("");
+                                    age.setText("");
+                                    ageautocomplete.setText("");
+                                    edStreetAddress.setText("");
+                                    edState.setText("");
+                                    edCountry.setText("");
+                                    evacuationName.setText("");
+
+
+                                    imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
+
+
+                                }else {
+                                    Toast.makeText(getContext().getApplicationContext(), "Evacuation Full", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    } catch (Exception e){
+                        Toast.makeText(getContext().getApplicationContext(), String.valueOf(e), Toast.LENGTH_SHORT).show();
                     }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-                places1.setImage(encodeImage);
-                databaseReference = firebaseDatabase.getReference().child("evacuee");
-                databaseReference.push().setValue(places1);
-                Toast.makeText(getActivity(), "Dara Added Successfully", Toast.LENGTH_SHORT).show();
-                firstName.setText("");
-                lastName.setText("");
-                middleName.setText("");
-                contactInfo.setText("");
-                gender.setText("");
-                age.setText("");
-                ageautocomplete.setText("");
-                edStreetAddress.setText("");
-                edState.setText("");
-                edCountry.setText("");
-                evacuationName.setText("");
-
-
-                imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);
-
-
-            }else {
-                Toast.makeText(getContext().getApplicationContext(), "Evacuation Full", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) {
-
-        }
-    });
-} catch (Exception e){
-    Toast.makeText(getContext().getApplicationContext(), String.valueOf(e), Toast.LENGTH_SHORT).show();
-}
 
 
 
+                }
 
             }
-
-         }
         });
 
         return v;

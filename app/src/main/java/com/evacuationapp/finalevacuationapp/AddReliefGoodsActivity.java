@@ -28,7 +28,7 @@ public class AddReliefGoodsActivity extends AppCompatActivity {
     DatabaseReference databaseReference,databaseReference2;
     FirebaseDatabase firebaseDatabase;
     EditText  EdAddReliefGoodsFood, EdAddReliefGoodsFoodPerPerson,EdAddReliefGoodsWater,EdAddReliefGoodsWaterPerPerson,EdAddReliefGoodsSponsor,EdAddReliefGoodsDate,EdAddReliefGoodsMealFor;
-    Button btnSave;
+    Button btnSave,btnList;
     AutoCompleteTextView EdAddReliefGoodsEvacuationName ;
     ArrayAdapter<String> adapterItems;
     @Override
@@ -45,6 +45,7 @@ public class AddReliefGoodsActivity extends AppCompatActivity {
         EdAddReliefGoodsDate = findViewById(R.id.edAddReliefGoodsDate);
         EdAddReliefGoodsMealFor= findViewById(R.id.edAddReliefGoodsMealFor);
         btnSave = findViewById(R.id.btnSave);
+        btnList = findViewById(R.id.btnlist);
 
         databaseReference2=firebaseDatabase.getReference().child("evacuation");
         databaseReference2.addValueEventListener(new ValueEventListener() {
@@ -88,7 +89,7 @@ public class AddReliefGoodsActivity extends AppCompatActivity {
                             , "Please Input Value", Toast.LENGTH_LONG).show();
                 }
                 else {
-                Places places=new Places();
+                ReliefGoodsGettersSetters places=new ReliefGoodsGettersSetters();
                 //  List<Places> placesList=new ArrayList<>();
 
                     places.setAddReliefGoodsEvacuationName(EdAddReliefGoodsEvacuationName.getText().toString());
@@ -117,6 +118,12 @@ public class AddReliefGoodsActivity extends AppCompatActivity {
                 EdAddReliefGoodsMealFor.setText("");
                 startActivity(new Intent(AddReliefGoodsActivity.this , ListAddedReliefGoodsActivity.class));
                 }
+            }
+        });
+        btnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AddReliefGoodsActivity.this , ListAddedReliefGoodsActivity.class));
             }
         });
     }

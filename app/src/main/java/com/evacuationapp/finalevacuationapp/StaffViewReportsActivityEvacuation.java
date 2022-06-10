@@ -52,7 +52,7 @@ public class StaffViewReportsActivityEvacuation extends AppCompatActivity {
         setContentView(R.layout.activity_staff_view_reports_evacuation);
         pieChart = findViewById(R.id.activity_main_piechart);
         setupPieChart();
-        EvacuationsearchED = findViewById(R.id.auto_complete_txt_evacuationName);
+        EvacuationsearchED = findViewById(R.id.auto_complete_txt_evacuationName2);
         ButtonSearchBtn = findViewById(R.id.buttonSearchBtn);
         sample = String.valueOf(EvacuationsearchED);
         MinorTV = findViewById(R.id.minorTV);

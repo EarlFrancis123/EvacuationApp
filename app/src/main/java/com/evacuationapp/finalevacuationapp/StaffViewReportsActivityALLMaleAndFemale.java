@@ -57,16 +57,16 @@ public class StaffViewReportsActivityALLMaleAndFemale extends AppCompatActivity 
                 countQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
-                        int count = 0;
+                        int count2 = 0;
                         for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
 
                             String value2 = String.valueOf(dataSnapshot2.child("gender").getValue());
                             if(value2.equals("Male")){
-                                count++;
+                                count2++;
                             }
                         }
-                        entries.add(new PieEntry(count,"Male"));
-                        MaleTV.setText(String.valueOf(count));
+                        entries.add(new PieEntry(count2,"Male"));
+                        MaleTV.setText(String.valueOf(count2));
                         for (int color: ColorTemplate.MATERIAL_COLORS) {
                             colors.add(color);
                         }
@@ -90,7 +90,7 @@ public class StaffViewReportsActivityALLMaleAndFemale extends AppCompatActivity 
 
 
 
-                        Toast.makeText(StaffViewReportsActivityALLMaleAndFemale.this, String.valueOf(count), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(StaffViewReportsActivityALLMaleAndFemale.this, String.valueOf(count2), Toast.LENGTH_SHORT).show();
                     }
 
 

@@ -212,7 +212,7 @@ evacuationCapacity = v.findViewById(R.id.edEvacuationCapacity);
                 else {
                     try {
                         Places places = new Places();
-                        Places places2 = new Places();
+                        EvacuationCapacity places2 = new EvacuationCapacity();
                         //  List<Places> placesList=new ArrayList<>();
                         int totalevacuue = 0;
                         places.setEvacuationName(evacuationName.getText().toString());

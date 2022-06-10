@@ -53,7 +53,7 @@ public class StaffViewReportsActivityMaleAndFemale extends AppCompatActivity {
         pieChart = findViewById(R.id.activity_main_piechart);
         setupPieChart();
         firebaseDatabase2 = FirebaseDatabase.getInstance();
-        EvacuationsearchED = findViewById(R.id.auto_complete_txt_evacuationName);
+        EvacuationsearchED = findViewById(R.id.auto_complete_txt_evacuationName2);
         ButtonSearchBtn = findViewById(R.id.buttonSearchBtn);
 
         MaleTV = findViewById(R.id.maleTV);

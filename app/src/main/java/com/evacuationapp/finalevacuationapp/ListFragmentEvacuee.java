@@ -159,12 +159,12 @@ public class ListFragmentEvacuee extends Fragment {
             imgPlace = view.findViewById(R.id.imgPlace);
 
             txtPlace.setText(
-                    " firstName: " + stringList.get(i).getFirstName()+
-                    "\n lastName: " + stringList.get(i).getLastName()+
-                            "\n middleName: " + stringList.get(i).getMiddleName()+
-                            "\n contactInfo: " + stringList.get(i).getContactInfo()+
-                            "\n gender: " + stringList.get(i).getGender()+
-                            "\n age: " + stringList.get(i).getAge()+
+                    " First Name: " + stringList.get(i).getFirstName()+
+                    "\n Last Name: " + stringList.get(i).getLastName()+
+                            "\n Middle Name: " + stringList.get(i).getMiddleName()+
+                            "\n ContactInfo: " + stringList.get(i).getContactInfo()+
+                            "\n Gender: " + stringList.get(i).getGender()+
+                            "\n Age: " + stringList.get(i).getAge()+
                             "\n Street: " + stringList.get(i).getStreetAddress()+
                             "\n State: " + stringList.get(i).getState()+
                             "\n Country: " + stringList.get(i).getCountry()+

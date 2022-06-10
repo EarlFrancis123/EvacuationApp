@@ -3,6 +3,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -23,13 +25,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ListAddedReliefGoodsActivity extends AppCompatActivity {
-    BottomNavigationView bottomNavigationView;
+
     private FirebaseAuth firebaseAuth;
     RecyclerView recview;
     myadapter2 adapter1;
     private FirebaseFirestore firestore;
     android.widget.SearchView SearchView;
     private Toolbar mainToolbar;
+    Button btnHome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +45,10 @@ public class ListAddedReliefGoodsActivity extends AppCompatActivity {
         SearchView = findViewById(R.id.searchView);
         recview = (RecyclerView) findViewById(R.id.recview);
         recview.setLayoutManager(new LinearLayoutManager(this));
-        bottomNavigationView = findViewById(R.id.bottom_navigator);
-        bottomNavigationView.setSelectedItemId(R.id.searchevacuee);
+        btnHome = findViewById(R.id.btnHome);
         mainToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
+
         getSupportActionBar().setTitle("Evacuation");
 
         FirebaseRecyclerOptions<model2> options =
@@ -54,34 +58,13 @@ public class ListAddedReliefGoodsActivity extends AppCompatActivity {
         adapter1 = new myadapter2(options);
         recview.setAdapter(adapter1);
 
+btnHome.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        startActivity(new Intent(ListAddedReliefGoodsActivity.this, StaffHomeActivity.class));
+    }
+});
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.userlandingpage:
-                        startActivity(new Intent(getApplicationContext(), UserHomeActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.searchevacuee:
-                        return true;
-
-                    case R.id.rescue:
-                        startActivity(new Intent(getApplicationContext(), UserRescueActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.nearest:
-                        startActivity(new Intent(getApplicationContext(), GetLatLong.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-
-                }
-                return false;
-            }
-        });
 
 
 

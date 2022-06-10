@@ -168,7 +168,7 @@ public class  ListFragment extends Fragment {
                             "\n Street : " + stringList.get(i).getStreetAddress() +
                             "\n City: " + stringList.get(i).getState() +
                             "\n Country: " + stringList.get(i).getCountry()+
-                            "\n Calamity Type : " + stringList.get(i).getEvacuationCalamityType()
+                            "\n Calamity: " + stringList.get(i).getEvacuationCalamityType()
             );
             try {
                 byte[] imageAsByte = Base64.decode(placesList.get(i).getImage().getBytes(), Base64.DEFAULT);

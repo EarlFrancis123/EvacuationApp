@@ -144,8 +144,8 @@ public class AddPLacesFragmentCalamity extends Fragment {
                     Toast.makeText(getActivity(), "Please Input Value", Toast.LENGTH_SHORT).show();
                 }
                  else {
-                    Places places = new Places();
-                    //  List<Places> placesList=new ArrayList<>();
+                    CalamityGettersSetters places = new CalamityGettersSetters();
+
                     places.setCalamityName(edCalamityName.getText().toString());
                     places.setCalamityDetails(edCalamityDetails.getText().toString());
                     places.setEdCalamityDate(edCalamityDate.getText().toString());

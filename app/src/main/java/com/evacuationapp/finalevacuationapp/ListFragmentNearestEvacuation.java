@@ -161,8 +161,8 @@ public class ListFragmentNearestEvacuation extends Fragment {
             txtPlace.setText(
                      " Name : " + stringList.get(i).getEvacuationName() +
                     "\n Number : " + stringList.get(i).getEvacuationNumber() +
-                    "\n Evacuation Barangay : " + stringList.get(i).getEvacuationBarangay() +
-                    "\n Evacuation Calamity Type : " + stringList.get(i).getEvacuationCalamityType() +
+                    "\n Barangay : " + stringList.get(i).getEvacuationBarangay() +
+                    "\n Calamity Type : " + stringList.get(i).getEvacuationCalamityType() +
                     "\n City : " + stringList.get(i).getStreetAddress() +
                     "\n State: " + stringList.get(i).getState() +
                     "\n Country: " + stringList.get(i).getCountry()+

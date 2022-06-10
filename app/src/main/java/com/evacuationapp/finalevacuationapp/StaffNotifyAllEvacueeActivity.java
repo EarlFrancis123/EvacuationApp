@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -28,6 +29,7 @@ public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
     EditText EvacuationNameED,MessageED;
     DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference();
     String NotificationMessage;
+    Button btnHome2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.bt_send);
         btn_sendtoall = findViewById(R.id.bt_sendtoall);
         EvacuationNameED = findViewById(R.id.evacuationNameED);
-
+        btnHome2 = findViewById(R.id.btnHome2);
         MessageED = findViewById(R.id.messageED);
 
         btn_sendtoall.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +56,12 @@ public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
                             ,100);
                 }
 
+            }
+        });
+        btnHome2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StaffNotifyAllEvacueeActivity.this, StaffHomeActivity.class));
             }
         });
        btn_send.setOnClickListener(new View.OnClickListener() {

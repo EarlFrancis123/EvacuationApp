@@ -91,6 +91,7 @@
         <entry key="..\:/Capstone/FinalCapstoneProject/app/src/main/res/menu/main_menu.xml" value="0.325" />
         <entry key="..\:/Capstone/FinalCapstoneProject/app/src/main/res/menu/searchmenu.xml" value="0.36666666666666664" />
         <entry key="..\:/Capstone/FinalCapstoneProject/app/src/main/res/menu/staff_menu.xml" value="0.325" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_add_post.xml" value="0.35688405797101447" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_add_relief_goods.xml" value="0.18802083333333333" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_list_added_relief_goods.xml" value="0.358695652173913" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_maps_getlatlong.xml" value="0.358695652173913" />
@@ -102,13 +103,18 @@
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_staff_view_reports_allmale_and_female.xml" value="0.18802083333333333" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_staff_view_reports_evacuation.xml" value="0.29030797101449274" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_staff_view_reports_male_and_female.xml" value="0.33" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_user_home.xml" value="0.35688405797101447" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_user_nearest_evacuation2.xml" value="0.358695652173913" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_user_rescue.xml" value="0.358695652173913" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_add_p_laces_calamity.xml" value="0.18802083333333333" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_add_places.xml" value="0.18802083333333333" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_add_places_evacuee.xml" value="0.18802083333333333" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_add_places_nearest_evacuation.xml" value="0.18802083333333333" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_maps.xml" value="0.33" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_maps_evacuee.xml" value="0.35688405797101447" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_maps_nearest_evacuation.xml" value="0.35688405797101447" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_staff_relief_goods.xml" value="0.358695652173913" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/fragment_user_nearest_evacuation_activity2.xml" value="0.35688405797101447" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/list_item.xml" value="0.358695652173913" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/list_item2.xml" value="0.358695652173913" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/places_layout.xml" value="0.358695652173913" />

@@ -67,7 +67,7 @@ public class MapsFragmentNearestEvacuation extends Fragment {
                 // for ActivityCompat#requestPermissions for more details.
                 return;
             }
-            googleMap.setMyLocationEnabled(true);
+            googleMap.setMyLocationEnabled(false);
 
         }
     };
@@ -77,7 +77,7 @@ public class MapsFragmentNearestEvacuation extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view=  inflater.inflate(R.layout.fragment_maps, container, false);
+        View view=  inflater.inflate(R.layout.fragment_maps_nearest_evacuation, container, false);
         return view; }
 
     DatabaseReference databaseReference;

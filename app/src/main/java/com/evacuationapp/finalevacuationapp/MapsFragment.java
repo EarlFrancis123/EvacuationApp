@@ -69,7 +69,7 @@ public class MapsFragment extends Fragment {
                 // for ActivityCompat#requestPermissions for more details.
                 return;
             }
-            googleMap.setMyLocationEnabled(true);
+            googleMap.setMyLocationEnabled(false);
 
         }
     };

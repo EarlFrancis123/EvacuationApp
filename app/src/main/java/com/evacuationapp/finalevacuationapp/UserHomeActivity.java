@@ -41,7 +41,6 @@ public class UserHomeActivity extends AppCompatActivity {
     private Toolbar mainToolbar;
     private FirebaseFirestore firestore;
     private RecyclerView mRecyclerView;
-    private FloatingActionButton fab;
     private PostAdapter adapter;
     private List<Post> list;
     private Query query;
@@ -62,18 +61,13 @@ public class UserHomeActivity extends AppCompatActivity {
         usersList = new ArrayList<>();
         adapter = new PostAdapter(UserHomeActivity.this , list, usersList);
         mRecyclerView.setAdapter(adapter);
-        fab = findViewById(R.id.floatingActionButton);
+
         setSupportActionBar(mainToolbar);
         getSupportActionBar().setTitle("Evacuation");
         bottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.userlandingpage);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserHomeActivity.this , UserAddPostActivity.class));
-            }
-        });
+
         if (firebaseAuth.getCurrentUser() != null){
 
             mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

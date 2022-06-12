@@ -74,51 +74,52 @@ public class UserRescueActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.rescue);
         locationManager=(LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-        //Check gps is enable or not
-                locationManager=(LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-                //Check gps is enable or not
-
-                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
-                {
-                    //Write Function To enable gps
-
-                    OnGPS();
-                }
-                else
-                {
-                    //GPS is already On then
-
-                    getLocation();
-                }
-                Geocoder geocoder;
-                List<Address> addresses;
-                geocoder = new Geocoder(UserRescueActivity.this, Locale.getDefault());
+try {
 
 
-                Log.e("latitude", "latitude--" + latitude);
+    //Check gps is enable or not
+    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-                try {
-                    Log.e("latitude", "inside latitude--" + latitude);
-                    addresses = geocoder.getFromLocation(lt.getuserLatitude(), lt.getuserLongitude(), 1);
+    //Check gps is enable or not
 
-                    if (addresses != null && addresses.size() > 0) {
-                        String address = addresses.get(0).getAddressLine(0);
-                        String city = addresses.get(0).getLocality();
-                        String state = addresses.get(0).getAdminArea();
-                        String country = addresses.get(0).getCountryName();
-                        String postalCode = addresses.get(0).getPostalCode();
-                        String knownName = addresses.get(0).getFeatureName();
+    if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+        //Write Function To enable gps
+
+        OnGPS();
+    } else {
+        //GPS is already On then
+
+        getLocation();
+    }
+    Geocoder geocoder;
+    List<Address> addresses;
+    geocoder = new Geocoder(UserRescueActivity.this, Locale.getDefault());
 
 
-                        location = address + " " + city + " " + country;
-                    }
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+    Log.e("latitude", "latitude--" + latitude);
 
+    try {
+        Log.e("latitude", "inside latitude--" + latitude);
+        addresses = geocoder.getFromLocation(lt.getuserLatitude(), lt.getuserLongitude(), 1);
+
+        if (addresses != null && addresses.size() > 0) {
+            String address = addresses.get(0).getAddressLine(0);
+            String city = addresses.get(0).getLocality();
+            String state = addresses.get(0).getAdminArea();
+            String country = addresses.get(0).getCountryName();
+            String postalCode = addresses.get(0).getPostalCode();
+            String knownName = addresses.get(0).getFeatureName();
+
+
+            location = address + " " + city + " " + country;
+        }
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+}catch (Exception e){
+
+}
 
 
 

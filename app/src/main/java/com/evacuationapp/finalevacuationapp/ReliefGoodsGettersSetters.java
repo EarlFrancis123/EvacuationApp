@@ -10,10 +10,16 @@ public class ReliefGoodsGettersSetters {
     String address;
     String barangay;
     String headOfFamily;
-    String  AddReliefGoodsEvacuationName, AddReliefGoodsFood, AddReliefGoodsFoodPerPerson,AddReliefGoodsWater,AddReliefGoodsWaterPerPerson,AddReliefGoodsSponsor,AddReliefGoodsDate;
+    String  AddReliefGoodsEvacuationName, AddReliefGoodsFood, AddReliefGoodsFoodPerPerson,AddReliefGoodsWater,AddReliefGoodsWaterPerPerson,AddReliefGoodsSponsor,AddReliefGoodsDate,AddReliefGoodsOthers;
     String age,ageautocomplete,AddReliefGoodsMealFor,edCalamityDate;
 
+    public String getAddReliefGoodsOthers() {
+        return AddReliefGoodsOthers;
+    }
 
+    public void setAddReliefGoodsOthers(String addReliefGoodsOthers) {
+        AddReliefGoodsOthers = addReliefGoodsOthers;
+    }
 
     public String getAgeautocomplete() {
         return ageautocomplete;

@@ -11,7 +11,7 @@
         android:layout_height="75dp"
 
         android:gravity="center"
-        android:text="GENERAL REPORT FOR GENDERS"
+        android:text="ALL EVACUATION"
         android:textColor="@color/purple_200"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -33,57 +33,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingClass" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="46dp"
-        android:layout_height="21dp"
-        android:text="Male = "
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_main_piechart"
-        app:layout_constraintVertical_bias="0.232" />
-
-    <TextView
-        android:id="@+id/maleTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No Data"
-        android:textColor="#020202"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/activity_main_piechart"
-        app:layout_constraintVertical_bias="0.235" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fe-Male = "
-        android:textColor="#040303"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
-        app:layout_constraintStart_toEndOf="@+id/maleTV"
-        app:layout_constraintTop_toBottomOf="@+id/activity_main_piechart"
-        app:layout_constraintVertical_bias="0.235" />
-
-    <TextView
-        android:id="@+id/femaleTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No Data"
-        android:textColor="#040303"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/activity_main_piechart"
-        app:layout_constraintVertical_bias="0.235" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

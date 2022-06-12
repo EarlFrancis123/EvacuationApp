@@ -74,7 +74,7 @@ public class  ListFragment extends Fragment {
         }
     }
 
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,databaseReference2;
     FirebaseDatabase firebaseDatabase;
     List<Places> placesList = new ArrayList<>();
     Places places;
@@ -90,7 +90,11 @@ public class  ListFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         titleTV = view.findViewById(R.id.TitleTV);
         databaseReference = firebaseDatabase.getReference("evacuation");
+        databaseReference2 = firebaseDatabase.getReference("calamity");
         placesList.clear();
+
+
+
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -134,6 +138,8 @@ public class  ListFragment extends Fragment {
         List<Places> stringList;
         TextView txtPlace;
         ImageView imgPlace;
+        List<String> stringList2;
+
 
         public MyAdapter(Context context, List<Places> stringList) {
             this.context = context;
@@ -168,7 +174,11 @@ public class  ListFragment extends Fragment {
                             "\n Street : " + stringList.get(i).getStreetAddress() +
                             "\n City: " + stringList.get(i).getState() +
                             "\n Country: " + stringList.get(i).getCountry()+
-                            "\n Calamity: " + stringList.get(i).getEvacuationCalamityType()
+                            "\n Calamity: " + stringList.get(i).getEvacuationCalamityType() +
+                            "\n Capacity: " + stringList.get(i).getEvacuationCapacity()
+
+
+
             );
             try {
                 byte[] imageAsByte = Base64.decode(placesList.get(i).getImage().getBytes(), Base64.DEFAULT);

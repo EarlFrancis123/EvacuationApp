@@ -36,8 +36,9 @@ public class StaffViewReportsActivityALLMaleAndFemale extends AppCompatActivity 
     EditText EvacuationsearchED;
     String sample ;
     Button ButtonSearchBtn;
-    TextView MaleTV, FemaleTV;
+
     String searchtext;
+    int count2 = 20;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,82 +48,28 @@ public class StaffViewReportsActivityALLMaleAndFemale extends AppCompatActivity 
 
 
         sample = String.valueOf(EvacuationsearchED);
-        MaleTV = findViewById(R.id.maleTV);
-        FemaleTV = findViewById(R.id.femaleTV);
+
 
 
                 ArrayList<Integer> colors = new ArrayList<>();
                 ArrayList<PieEntry> entries = new ArrayList<>();
-                Query countQuery = databaseReference.child("evacuee");
+
+                Query countQuery = databaseReference.child("evacuation");
                 countQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
-                        int count2 = 0;
+
                         for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
 
-                            String value2 = String.valueOf(dataSnapshot2.child("gender").getValue());
-                            if(value2.equals("Male")){
-                                count2++;
+                            String value2 = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
+                            entries.add(new PieEntry(count2,value2));
+
+                            for (int color: ColorTemplate.MATERIAL_COLORS) {
+                                colors.add(color);
                             }
-                        }
-                        entries.add(new PieEntry(count2,"Male"));
-                        MaleTV.setText(String.valueOf(count2));
-                        for (int color: ColorTemplate.MATERIAL_COLORS) {
-                            colors.add(color);
-                        }
-                        for (int color : ColorTemplate.VORDIPLOM_COLORS) {
-                            colors.add(color);
-                        }
-                        PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
-                        dataSet.setColors(colors);
-
-                        PieData data = new PieData(dataSet);
-                        data.setDrawValues(true);
-                        data.setValueFormatter(new PercentFormatter(pieChart));
-                        data.setValueTextSize(12f);
-                        data.setValueTextColor(Color.BLACK);
-
-                        pieChart.setData(data);
-                        pieChart.invalidate();
-
-                        pieChart.animateY(1400, Easing.EaseInOutQuad);
-
-
-
-
-                        Toast.makeText(StaffViewReportsActivityALLMaleAndFemale.this, String.valueOf(count2), Toast.LENGTH_SHORT).show();
-                    }
-
-
-
-
-
-
-                    @Override
-                    public void onCancelled( DatabaseError error) {
-
-                    }
-                });
-                Query countQuery2 = databaseReference.child("evacuee");
-                countQuery2.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        int count = 0;
-                        for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
-
-                                String value2 = String.valueOf(dataSnapshot2.child("gender").getValue());
-                                if(value2.equals("Fe Male")){
-                                    count++;
-                                }
-
-                        }
-                        entries.add(new PieEntry(count,"Female"));
-                        FemaleTV.setText(String.valueOf(count));
-                        for (int color: ColorTemplate.MATERIAL_COLORS) {
-                            colors.add(color);
-                        }
-                        for (int color : ColorTemplate.VORDIPLOM_COLORS) {
-                            colors.add(color);
+                            for (int color : ColorTemplate.VORDIPLOM_COLORS) {
+                                colors.add(color);
+                            }
                             PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
                             dataSet.setColors(colors);
 
@@ -136,22 +83,20 @@ public class StaffViewReportsActivityALLMaleAndFemale extends AppCompatActivity 
                             pieChart.invalidate();
 
                             pieChart.animateY(1400, Easing.EaseInOutQuad);
+
                         }
 
 
 
+                        Toast.makeText(StaffViewReportsActivityALLMaleAndFemale.this, String.valueOf(count2), Toast.LENGTH_SHORT).show();
                     }
-
-
-
-
-
 
                     @Override
                     public void onCancelled( DatabaseError error) {
 
                     }
                 });
+
 
 
 

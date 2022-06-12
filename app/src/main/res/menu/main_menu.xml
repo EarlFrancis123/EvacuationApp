@@ -6,7 +6,7 @@
         android:title="Relief Goods" />
     <item
         android:id="@+id/notify_menu"
-        android:title="Notify Evacuee" />
+        android:title="Notify" />
     <item
         android:id="@+id/reports_menu"
         android:title="Reports" />

@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -79,12 +80,15 @@ public class UserSignInActivity extends AppCompatActivity {
                             }
                         }
                         if (check == true) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    Toast.makeText(UserSignInActivity.this, "Login Successfull !!", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(UserSignInActivity.this, UserHomeActivity.class));
-                                    finish();
+
+                                        Toast.makeText(UserSignInActivity.this, "Login Successfull !!", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(UserSignInActivity.this, UserHomeActivity.class));
+                                        finish();
+
                                 }
                             });
                         }else{

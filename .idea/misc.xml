@@ -94,6 +94,8 @@
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_add_relief_goods.xml" value="0.18802083333333333" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_list_added_relief_goods.xml" value="0.358695652173913" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_maps_getlatlong.xml" value="0.358695652173913" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_sign_in.xml" value="0.358695652173913" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_sign_up.xml" value="0.358695652173913" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_staff_notify_all_evacuee.xml" value="0.18802083333333333" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_staff_view_reports.xml" value="0.358695652173913" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/activity_staff_view_reports_allevacuation.xml" value="0.25" />
@@ -113,6 +115,9 @@
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/places_layout_evacuation.xml" value="0.358695652173913" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/places_layout_nearest.xml" value="0.358695652173913" />
         <entry key="..\:/EvacuationApp/app/src/main/res/layout/singlerow.xml" value="0.358695652173913" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/menu/main_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/EvacuationApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
         <entry key="..\:/FinaCapstoneProject/EvacuationApp/app/src/main/res/layout/activity_add_relief_goods.xml" value="0.18802083333333333" />
         <entry key="..\:/FinaCapstoneProject/EvacuationApp/app/src/main/res/layout/activity_list_added_relief_goods.xml" value="0.18802083333333333" />
         <entry key="..\:/FinaCapstoneProject/EvacuationApp/app/src/main/res/layout/activity_staff_add_calamity.xml" value="0.18802083333333333" />

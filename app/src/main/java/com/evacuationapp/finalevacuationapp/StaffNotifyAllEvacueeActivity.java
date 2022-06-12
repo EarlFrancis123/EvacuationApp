@@ -84,12 +84,12 @@ public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
     private void sendMessage() {
         String sMessage = MessageED.getText().toString().trim();
 
-        Query countQuery5 = databaseReference2.child("evacuee");
+        Query countQuery5 = databaseReference2.child("User");
         countQuery5.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
-                    String value = String.valueOf(dataSnapshot2.child("contactInfo").getValue());
+                    String value = String.valueOf(dataSnapshot2.child("number").getValue());
 
 
 

@@ -79,7 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 root.push().setValue(userMap);
 
                                 Toast.makeText(SignUpActivity.this, "REgistered Successfully !!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(SignUpActivity.this , SetUpActivity.class));
+                                startActivity(new Intent(SignUpActivity.this , SignInActivity.class));
                                 finish();
                             }else{
                                 Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

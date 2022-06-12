@@ -77,7 +77,7 @@ public class UserSignUpActivity extends AppCompatActivity {
 
                                     root.push().setValue(userMap);
                                 Toast.makeText(UserSignUpActivity.this, "REgistered Successfully !!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(UserSignUpActivity.this , UserSetUpActivity.class));
+                                startActivity(new Intent(UserSignUpActivity.this , UserSignInActivity.class));
                                 finish();
                             }else{
                                 Toast.makeText(UserSignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

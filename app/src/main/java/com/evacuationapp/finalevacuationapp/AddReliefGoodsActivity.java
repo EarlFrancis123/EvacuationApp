@@ -27,10 +27,13 @@ import java.util.ArrayList;
 public class AddReliefGoodsActivity extends AppCompatActivity {
     DatabaseReference databaseReference,databaseReference2;
     FirebaseDatabase firebaseDatabase;
-    EditText  EdAddReliefGoodsFood, EdAddReliefGoodsFoodPerPerson,EdAddReliefGoodsWater,EdAddReliefGoodsWaterPerPerson,EdAddReliefGoodsSponsor,EdAddReliefGoodsDate,EdAddReliefGoodsMealFor;
+    EditText  EdAddReliefGoodsFood, EdAddReliefGoodsOthers,EdAddReliefGoodsWater,EdAddReliefGoodsWaterPerPerson,EdAddReliefGoodsSponsor,EdAddReliefGoodsDate,EdAddReliefGoodsMealFor;
     Button btnSave,btnList;
     AutoCompleteTextView EdAddReliefGoodsEvacuationName ;
     ArrayAdapter<String> adapterItems;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,15 +41,12 @@ public class AddReliefGoodsActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         EdAddReliefGoodsEvacuationName = findViewById(R.id.edAddReliefGoodsEvacuationName);
         EdAddReliefGoodsFood = findViewById(R.id.edAddReliefGoodsFood);
-        EdAddReliefGoodsFoodPerPerson = findViewById(R.id.edAddReliefGoodsFoodPerPerson);
         EdAddReliefGoodsWater = findViewById(R.id.edAddReliefGoodsWater);
-        EdAddReliefGoodsWaterPerPerson = findViewById(R.id.edAddReliefGoodsWaterPerPerson);
         EdAddReliefGoodsSponsor = findViewById(R.id.edAddReliefGoodsSponsor);
         EdAddReliefGoodsDate = findViewById(R.id.edAddReliefGoodsDate);
-        EdAddReliefGoodsMealFor= findViewById(R.id.edAddReliefGoodsMealFor);
         btnSave = findViewById(R.id.btnSave);
         btnList = findViewById(R.id.btnlist);
-
+        EdAddReliefGoodsOthers = findViewById(R.id.edAddReliefGoodsOthers);
         databaseReference2=firebaseDatabase.getReference().child("evacuation");
         databaseReference2.addValueEventListener(new ValueEventListener() {
             @Override
@@ -79,12 +79,11 @@ public class AddReliefGoodsActivity extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(EdAddReliefGoodsEvacuationName.getText().toString())
                         && TextUtils.isEmpty(EdAddReliefGoodsFood.getText().toString())
-                        && TextUtils.isEmpty(EdAddReliefGoodsFoodPerPerson.getText().toString())
                         && TextUtils.isEmpty(EdAddReliefGoodsWater.getText().toString())
-                        && TextUtils.isEmpty(EdAddReliefGoodsWaterPerPerson.getText().toString())
+                        && TextUtils.isEmpty(EdAddReliefGoodsOthers.getText().toString())
                         && TextUtils.isEmpty(EdAddReliefGoodsSponsor.getText().toString())
                         && TextUtils.isEmpty(EdAddReliefGoodsDate.getText().toString())
-                        && TextUtils.isEmpty(EdAddReliefGoodsMealFor.getText().toString())){
+                     ){
                     Toast.makeText(getApplicationContext()
                             , "Please Input Value", Toast.LENGTH_LONG).show();
                 }
@@ -94,12 +93,10 @@ public class AddReliefGoodsActivity extends AppCompatActivity {
 
                     places.setAddReliefGoodsEvacuationName(EdAddReliefGoodsEvacuationName.getText().toString());
                     places.setAddReliefGoodsFood(EdAddReliefGoodsFood.getText().toString());
-                    places.setAddReliefGoodsFoodPerPerson(EdAddReliefGoodsFoodPerPerson.getText().toString());
                     places.setAddReliefGoodsWater(EdAddReliefGoodsWater.getText().toString());
-                    places.setAddReliefGoodsWaterPerPerson(EdAddReliefGoodsWaterPerPerson.getText().toString());
+                    places.setAddReliefGoodsOthers(EdAddReliefGoodsOthers.getText().toString());
                     places.setAddReliefGoodsSponsor(EdAddReliefGoodsSponsor.getText().toString());
                     places.setAddReliefGoodsDate(EdAddReliefGoodsDate.getText().toString());
-                    places.setAddReliefGoodsMealFor(EdAddReliefGoodsMealFor.getText().toString());
 
 
 
@@ -110,13 +107,12 @@ public class AddReliefGoodsActivity extends AppCompatActivity {
 
                 EdAddReliefGoodsEvacuationName.setText("");
                 EdAddReliefGoodsFood.setText("");
-                EdAddReliefGoodsFoodPerPerson.setText("");
                 EdAddReliefGoodsWater.setText("");
-                EdAddReliefGoodsWaterPerPerson.setText("");
                 EdAddReliefGoodsSponsor.setText("");
+                    EdAddReliefGoodsOthers.setText("");
                 EdAddReliefGoodsDate.setText("");
-                EdAddReliefGoodsMealFor.setText("");
-                startActivity(new Intent(AddReliefGoodsActivity.this , ListAddedReliefGoodsActivity.class));
+
+
                 }
             }
         });
@@ -127,4 +123,9 @@ public class AddReliefGoodsActivity extends AppCompatActivity {
             }
         });
     }
+    public void openDialog() {
+        ExampleDialog exampleDialog = new ExampleDialog();
+        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+    }
+
 }

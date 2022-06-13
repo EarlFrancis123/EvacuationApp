@@ -154,7 +154,7 @@ public class StaffViewReportsActivityALLEvacuation extends AppCompatActivity {
         pieChart.setUsePercentValues(true);
         pieChart.setEntryLabelTextSize(12);
         pieChart.setEntryLabelColor(Color.BLACK);
-        pieChart.setCenterText("Genders");
+        pieChart.setCenterText("Evacuation Capacity");
         pieChart.setCenterTextSize(24);
         pieChart.getDescription().setEnabled(false);
 

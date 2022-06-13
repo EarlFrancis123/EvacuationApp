@@ -62,7 +62,7 @@ public class StaffViewReportsActivityALLMaleAndFemale extends AppCompatActivity 
                         for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
 
                             String value2 = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
-                            entries.add(new PieEntry(count2,value2));
+                            entries.add(new PieEntry(1,value2));
 
                             for (int color: ColorTemplate.MATERIAL_COLORS) {
                                 colors.add(color);
@@ -88,7 +88,7 @@ public class StaffViewReportsActivityALLMaleAndFemale extends AppCompatActivity 
 
 
 
-                        Toast.makeText(StaffViewReportsActivityALLMaleAndFemale.this, String.valueOf(count2), Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override
@@ -105,10 +105,9 @@ public class StaffViewReportsActivityALLMaleAndFemale extends AppCompatActivity 
 
     private void setupPieChart() {
         pieChart.setDrawHoleEnabled(true);
-        pieChart.setUsePercentValues(true);
         pieChart.setEntryLabelTextSize(12);
         pieChart.setEntryLabelColor(Color.BLACK);
-        pieChart.setCenterText("Genders");
+        pieChart.setCenterText("Evacuations");
         pieChart.setCenterTextSize(24);
         pieChart.getDescription().setEnabled(false);
 

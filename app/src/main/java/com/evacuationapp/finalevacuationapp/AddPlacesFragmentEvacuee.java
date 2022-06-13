@@ -108,7 +108,7 @@ public class AddPlacesFragmentEvacuee extends Fragment {
     EditText firstName, lastName, middleName, contactInfo,age,address,barangay,headOfFamily,edStreetAddress,edState;
     Button btnSave;
     ImageView imgPlace;
-    String[] items =  {"Male","Fe Male"};
+    String[] items =  {"Male","Female"};
     String[] items2 =  {"Minor","Adult","Senior Citizen"};
     String[] items3 =  {"Philippines"};
     String[] items5 =  {"Have", "None"};

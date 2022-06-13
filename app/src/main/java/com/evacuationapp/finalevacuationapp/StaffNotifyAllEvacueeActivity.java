@@ -11,6 +11,9 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,26 +25,61 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 
 
 public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
     Button btn_send,btn_sendtoall;
-    EditText EvacuationNameED,MessageED;
+    EditText MessageED;
     DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference databaseReference;
     String NotificationMessage;
     Button btnHome2;
+    AutoCompleteTextView EvacuationsearchED;
+    ArrayAdapter<String> adapterItems;
+    FirebaseDatabase firebaseDatabase2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_notify_all_evacuee);
-
+        firebaseDatabase2 = FirebaseDatabase.getInstance();
         btn_send = findViewById(R.id.bt_send);
         btn_sendtoall = findViewById(R.id.bt_sendtoall);
-        EvacuationNameED = findViewById(R.id.evacuationNameED);
+        EvacuationsearchED = findViewById(R.id.auto_complete_txt_evacuationName2);
         btnHome2 = findViewById(R.id.btnHome2);
         MessageED = findViewById(R.id.messageED);
+        try {
+            databaseReference=firebaseDatabase2.getReference().child("evacuation");
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    ArrayList array = new ArrayList<>();
+                    for (DataSnapshot dataSnapshot2 : snapshot.getChildren()) {
+                        String value2 = String.valueOf(dataSnapshot2.child("evacuationName").getValue());
+                        array.add(value2);
+                    }
+                    adapterItems = new ArrayAdapter<String>(StaffNotifyAllEvacueeActivity.this.getApplicationContext(), R.layout.list_item, array);
+                    EvacuationsearchED.setAdapter(adapterItems);
+                }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            EvacuationsearchED.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String item = parent.getItemAtPosition(position).toString();
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(StaffNotifyAllEvacueeActivity.this, String.valueOf(e), Toast.LENGTH_SHORT).show();
+
+        }
         btn_sendtoall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,7 +168,7 @@ public class StaffNotifyAllEvacueeActivity extends AppCompatActivity {
 
                     String value = String.valueOf(dataSnapshot1.child("evacuationName").getValue());
 
-                    if(value.equals( EvacuationNameED.getText().toString())){
+                    if(value.equals( EvacuationsearchED.getText().toString())){
                         String value1 = String.valueOf(dataSnapshot1.child("contactInfo").getValue());
                         NotificationMessage = ("asdasdsadaasdasdasdasdasd");
                         if (!value1.equals("") && !sMessage.equals("")) {

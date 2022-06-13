@@ -231,6 +231,7 @@ evacuationCapacity = v.findViewById(R.id.edEvacuationCapacity);
                                 places.getCountry() + ",").longitude);
                         places2.setEvacuationCapacity(evacuationCapacity.getText().toString());
                         places2.setTotalEvacuee(totalevacuue);
+                        places2.setEvacuationName(evacuationName.getText().toString());
                         places.setEvacuationCapacity(evacuationCapacity.getText().toString());
 
 
@@ -244,6 +245,7 @@ evacuationCapacity = v.findViewById(R.id.edEvacuationCapacity);
                         edStreetAddress.setText("");
                         evacuationName.setText("");
                         evacuationNumber.setText("");
+                        evacuationCapacity.setText("");
                         evacuationBarangay.setText("");
                         evacuationCalamityType.setText("");
                         imgPlace.setImageResource(android.R.drawable.ic_menu_gallery);

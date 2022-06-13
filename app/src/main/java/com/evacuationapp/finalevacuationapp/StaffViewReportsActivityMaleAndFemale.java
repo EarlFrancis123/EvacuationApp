@@ -172,7 +172,7 @@ public class StaffViewReportsActivityMaleAndFemale extends AppCompatActivity {
 
                             if(value.equals( EvacuationsearchED.getText().toString())){
                                 String value2 = String.valueOf(dataSnapshot2.child("gender").getValue());
-                                if(value2.equals("Fe Male")){
+                                if(value2.equals("Female")){
                                     count++;
                                 }
                             }

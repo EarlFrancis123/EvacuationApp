@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:text="EVACUEE LIST"
+        android:text="RELIEF GOODS LIST"
         android:textColor="#FFFFFF"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/recview"

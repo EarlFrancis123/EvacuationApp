@@ -113,7 +113,7 @@ public class MapsFragment extends Fragment {
                                 placesList.get(i).getCountry()+",";
                         address=new LatLng(placesList.get(i).getLatitude(),placesList.get(i).getLongitude());
                         googleMap.addMarker(new MarkerOptions().position(address)
-                                .title(placesList.get(i).getStreetAddress()));
+                                .title(placesList.get(i).getEvacuationName()+", "+placesList.get(i).getStreetAddress()));
 
                         if (i==0)
                             googleMap.moveCamera(CameraUpdateFactory.newLatLng(address));

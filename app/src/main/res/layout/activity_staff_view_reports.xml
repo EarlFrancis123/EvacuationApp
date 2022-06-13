@@ -139,7 +139,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ALL GENDER"
+                    android:text="ALL EVACUATIONS"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
